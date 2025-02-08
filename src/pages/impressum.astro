@@ -1,0 +1,73 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import HorizontalCard from "../components/HorizontalCard.astro";
+import { getCollection } from "astro:content";
+import createSlug from "../lib/createSlug"
+
+const posts = (await getCollection("blog")).sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf());
+
+const last_posts = posts.slice(0, 3);
+---
+
+<BaseLayout sideBarActiveItemID="home">
+  <div class="pb-12 mt-5">
+    <div class="pb-12 mt-5">
+    <div class="text-5xl font-bold">Datenschutz & Impressum</div>
+        <div class="py-2 mt-4">
+            <div class="text-3xl font-bold mb-2">Datenschutz</div>
+            <p class="text-lg">
+                Wir nehmen den Schutz Ihrer persönlichen Daten sehr ernst und halten uns strikt an die Regeln der Datenschutzgesetze. Personenbezogene Daten werden auf dieser Webseite nur im technisch notwendigen Umfang erhoben. In keinem Fall werden die erhobenen Daten verkauft oder aus anderen Gründen an Dritte weitergegeben.
+            </p>
+            <p class="text-lg mt-2">
+                Die nachfolgende Erklärung gibt Ihnen einen Überblick darüber, wie wir diesen Schutz gewährleisten und welche Art von Daten zu welchem Zweck erhoben werden.
+            </p>
+            <div class="text-2xl font-bold mt-4">Datenverarbeitung auf dieser Internetseite</div>
+            <p class="text-lg mt-2">
+                Alan Gawlik erhebt und speichert automatisch in ihren Server-Log-Files Informationen, die Ihr Browser an uns übermittelt. Dies sind:
+            </p>
+            <ul class="list-disc list-inside text-lg mt-2">
+                <li>Browsertyp/ -version</li>
+                <li>verwendetes Betriebssystem</li>
+                <li>Referrer URL (die zuvor besuchte Seite)</li>
+                <li>Hostname des zugreifenden Rechners (IP Adresse)</li>
+                <li>Uhrzeit der Serveranfrage</li>
+            </ul>
+            <p class="text-lg mt-2">
+                Diese Daten sind für Alan Gawlik nicht bestimmten Personen zuordenbar. Eine Zusammenführung dieser Daten mit anderen Datenquellen wird nicht vorgenommen, die Daten werden zudem nach einer statistischen Auswertung gelöscht.
+            </p>
+    
+            <div class="text-3xl font-bold mt-8 mb-2">Impressum</div>
+            <p class="text-lg">
+                Angaben gemäß § 5 TMG:
+            </p>
+            <p class="text-lg mt-2">
+                Alan Gawlik<br>
+                Regattastr 66<br>
+                12527 Berlin<br>
+                Deutschland
+            </p>
+            <div class="text-2xl font-bold mt-4">Kontakt:</div>
+            <p class="text-lg mt-2">
+                Telefon: +4915734066000<br>
+                E-Mail: info@alangawlik.de
+            </p>
+            <div class="text-2xl font-bold mt-4">Verantwortlich für den Inhalt nach § 55 Abs. 2 RStV:</div>
+            <p class="text-lg mt-2">
+                Alan Gawlik<br>
+                Regattastr 66<br>
+                12527 Berlin<br>
+                Deutschland
+            </p>
+            <div class="text-2xl font-bold mt-4">Haftungsausschluss:</div>
+            <p class="text-lg mt-2">
+                Haftung für Inhalte<br>
+                Die Inhalte unserer Seiten wurden mit größter Sorgfalt erstellt. Für die Richtigkeit, Vollständigkeit und Aktualität der Inhalte können wir jedoch keine Gewähr übernehmen.
+            </p>
+            <p class="text-lg mt-2">
+                Haftung für Links<br>
+                Unser Angebot enthält Links zu externen Webseiten Dritter, auf deren Inhalte wir keinen Einfluss haben. Deshalb können wir für diese fremden Inhalte auch keine Gewähr übernehmen. Für die Inhalte der verlinkten Seiten ist stets der jeweilige Anbieter oder Betreiber der Seiten verantwortlich.
+            </p>
+        </div>
+    </div>  
+  </div>
+</BaseLayout>

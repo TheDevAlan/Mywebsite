@@ -1,0 +1,163 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import HorizontalCard from "../components/HorizontalCard.astro";
+import { getCollection } from "astro:content";
+import createSlug from "../lib/createSlug"
+
+const posts = (await getCollection("blog")).sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf());
+
+const last_posts = posts.slice(0, 3);
+---
+
+<style>
+  .wave {
+    display: inline-block;
+    animation: waving 2.5s ease-in-out infinite;
+    transform-origin: 70% 70%;
+  }
+
+  @keyframes waving {
+    0% { transform: rotate(0deg); }
+    10% { transform: rotate(14deg); }
+    20% { transform: rotate(-8deg); }
+    30% { transform: rotate(14deg); }
+    40% { transform: rotate(-4deg); }
+    50% { transform: rotate(10deg); }
+    60% { transform: rotate(0deg); }
+    100% { transform: rotate(0deg); }
+  }
+
+  .contact-btn {
+    background-color: #1A1919;
+    color: white;
+    padding: 0.8rem 1.0rem;
+    border-radius: 0.5rem;
+    font-weight: 400;
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .contact-btn::after {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: linear-gradient(
+      to right,
+      transparent,
+      transparent 50%,
+      rgba(255, 255, 255, 0.08) 48%,
+      rgba(255, 255, 255, 0.08) 52%,
+      transparent 55%,
+      transparent
+    );
+    transform: rotate(30deg);
+    animation: shine 4s infinite linear;
+    pointer-events: none;
+  }
+
+  .projekte-btn {
+    background-color: #1A1919;
+    color: white;
+    padding: 0.6rem 1.0rem;
+    border-radius: 0.5rem;
+    font-weight: 400;
+    transition: all 0.3s ease;
+  }
+
+  @keyframes shine {
+    from {
+      transform: translateX(-100%) rotate(30deg);
+    }
+    to {
+      transform: translateX(100%) rotate(30deg);
+    }
+  }
+
+  .contact-btn:hover {
+    background-color: #2a2929;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  }
+
+  .projekte-btn:hover {
+    background-color: #2a2929;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  }
+
+  .gradient-text {
+    background: linear-gradient(90deg, #0F2144, #3C8B6F);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    font-weight: bold;
+    display: inline-block;
+    transition: all 0.3s ease;
+    cursor: pointer;
+    transform: scale(1.02);
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.1);
+  }
+
+  .gradient-text:hover {
+    transform: scale(1.05);
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+    filter: brightness(1.1);
+  }
+</style>
+
+<BaseLayout sideBarActiveItemID="home">
+  <div class="pb-12 mt-5">
+    <div class="text-xl py-1">Hallo <span class="wave">👋</span></div>
+    <div class="text-5xl font-bold">Ich bin Alan</div>
+    <div class="text-3xl py-3 font-bold">KI-Enthusiast und Hobby-Entwickler</div>
+    <div class="py-2">
+      <text class="text-lg">
+        Auf dieser Webseite stelle ich meine <span class="gradient-text">KI-Assistanten</span> vor, die den Workflow erleichtern und den Alltag bereichern sollen. Ich entwickle zudem maßgeschneiderte <span class="gradient-text">Code-Lösungen</span>, die Arbeitsprozesse effizienter gestalten und repetitive Aufgaben automatisieren.
+      </text>
+    </div>
+    <div class="mt-8">
+      <a class="contact-btn" href="mailto:info@alangawlik.de" target="_blank">Lass uns in Kontakt treten!</a>
+    </div>    
+  </div>
+
+  <div>
+    <div class="text-3xl w-full font-bold mb-2">Meine aktuellen Projekte</div>
+  </div>
+
+  <HorizontalCard
+    title="Seoul Travel Guide"
+    img="/Profil/SeoulGuide.jpg"
+    desc="Mache ein Foto und ich erzähle dir die Geschichte dahinter – von kulturellen Traditionen bis zu historischen Hintergründen. Ich bin dein smarter Reisebegleiter für Seoul und Südkorea"
+    url="https://chatgpt.com/g/g-674db92f66d881919296486a8ee94760-seoul-guide"
+    badge="NEW"
+  />
+  <div class="divider my-0"></div>
+  <HorizontalCard
+    title="The Assistant"
+    img="/Profil/The_Assitant_extended.jpg"
+    desc="Dieser ChatBot optimiert deine Arbeitsabläufe und beschleunigt den Alltag. Mit spezialisierten Hotkeys und einer präzisen Arbeitsweise liefert er blitzschnelle und treffende Antworten."
+    url="https://chatgpt.com/g/g-s5BkH9UiP-the-assistant"
+  />
+  <div class="divider my-0"></div>
+  <HorizontalCard
+    title="PolitikRadar"
+    img="/Profil/Politikradar.jpg"
+    desc="Ich helfe dir, rhetorische Tricks in Texten zu erkennen und verständlich zu erklären. Poste einfach einen Link – ich analysiere den Inhalt, identifiziere Manipulationstechniken und fördere dein kritisches Denken!"
+    url="https://chatgpt.com/g/g-oSWt8Pc3h-politikradar"
+  />
+  <div class="divider my-0"></div>
+  <HorizontalCard
+    title="Ihre Assistenz im Fördermittelmanagement"
+    img="/Profil/Foerderfee_Logo.jpg"
+    desc="FörderFee hilft dir, dich im Berliner Fördermittelmanagement zurechtzufinden – mit Fokus auf LHO und TV-L. Ich beantworte deine Fragen präzise und regelkonform, damit deine Anträge und Eingruppierungen rechtssicher sind!"
+    url="https://chatgpt.com/g/g-7kng5aPM4-forderfee"
+  />
+
+  <div class="mt-8 flex justify-center">
+    <a class="projekte-btn" href="/projects">Alle Projekte ansehen</a>
+  </div>
+</BaseLayout>

@@ -1,0 +1,8 @@
+---
+import SideBarMenu from "./SideBarMenu.astro";
+const { sideBarActiveItemID } = Astro.props;
+---
+
+<nav class="horizontal-menu bg-base-200 text-base-content flex justify-center space-x-4 py-4 w-full">
+  <SideBarMenu sideBarActiveItemID={sideBarActiveItemID} />
+</nav>
