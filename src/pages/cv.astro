@@ -1,0 +1,99 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import TimeLineElement from "../components/cv/TimeLine.astro";
+---
+
+<BaseLayout title="Resume" sideBarActiveItemID="Lebenslauf">
+  <div class="mb-5">
+    <div class="text-3xl w-full font-bold">Biographie</div>
+  </div>
+
+  <div class="mb-10 text-justify">
+    Mein Name ist Alan Gawlik und ich wurde am 02.09.1989 in Kattowitz/Polen geboren.<br><br>
+    Seit über fünf Jahren unterstütze ich Zuwendungsempfänger im Fördermittelmanagement dabei, ihre Projekte erfolgreich zu finanzieren. In meiner Rolle als Fördermittelberater und Prüfer widme ich mich besonders der Integration von Künstlicher Intelligenz in diesem Bereich. Dabei habe ich maßgeschneiderte GPTs für verschiedenste Anwendungen im Fördermittelmanagement entworfen.
+  </div>
+
+  <div class="mb-5">
+    <div class="text-3xl w-full font-bold">Berufserfahrung</div>
+  </div>
+
+  <div class="time-line-container mb-10">
+    <TimeLineElement
+      title="Prüfer"
+      subtitle="Ab Februar 2022 bis Heute bei der zgs consult GmbH, Berlin, DE"
+    >
+    Eigenständige Prüfung von Verwendungsnachweisen der Zuwendungsempfänger, darunter Förmlichkeits- und Vollständigkeitsprüfung, zahlenmäßige Belegprüfung, Stichprobenprüfung und (Voll-)Prüfung vor Ort, Dokumentation der Prüfung in Prüfvermerken, Beratung von Projektträgern hinsichtlich zuwendungsrechtlicher Fragen, Erstellung benutzerspezifischer GPTs.
+    </TimeLineElement>
+    <TimeLineElement
+      title="Fördermittelberater"
+      subtitle="Ab August 2019 bis Februar 2022 bei der gsub mbH - Gesellschaft für soziale Unternehmensberatung, Berlin, DE"
+    >
+    Prüfung von Anträgen, Durchführung von Vor-Ort-Kontrollen, persönliche Beratung von Antragstellern und Zuwendungsempfängern, Controlling projektbezogener Prüffristen, Mitarbeit bei der Telefon- und E-Mail-Hotline zur Beratung der Zuwendungsempfänger zur praktischen und inhaltlichen Handhabung des Onlineverfahrens.
+    </TimeLineElement>
+  </div>
+
+  <div class="mb-5">
+    <div class="text-3xl w-full font-bold">Bildung</div>
+  </div>
+
+  <div class="time-line-container grid gap-4 mb-10">
+    <TimeLineElement
+      title="Bachelor of Arts"
+      subtitle="Schmalkalden, DE, Spezifizierung: Wirtschaftswissenschaften"
+    />
+    <TimeLineElement
+      title="Fachabitur"
+      subtitle="Bad Neustadt a.d. Saale, DE, Spezifizierung: Wirtschaftslehre"
+    />
+  </div>
+
+  <div class="mb-5">
+    <div class="text-3xl w-full font-bold">Zertifikate</div>
+  </div>
+
+  <ul class="list-disc mx-6 mb-10 grid gap-2">
+    <li>
+      <a href="#" target="_blank">
+        <strong>Zuwendungsrecht des Bundes und der Länder 1</strong><br>
+        Leitung: Jürgen Salgert, Verw. Dipl., Gesundheitsökonom (FH), Berlin
+      </a>
+    </li>        
+    <li>
+      <a href="#" target="_blank">
+        <strong>Zuwendungsrecht des Bundes und der Länder 2</strong><br>
+        Leitung: Jürgen Salgert, Verw. Dipl., Gesundheitsökonom (FH), Berlin
+      </a>
+    </li>     
+    <li>
+      <a href="#" target="_blank">
+        <strong>Zuwendungsrecht des Bundes und der Länder 3</strong><br>
+        Leitung: Jürgen Salgert, Verw. Dipl., Gesundheitsökonom (FH), Berlin
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_blank">
+        <strong>GPT im Unternehmen: Entwickeln Sie Ihr maßgeschneidertes Large Language Model</strong><br>
+        Leitung: Denys Holovatyi, Chief Artificial Intelligence Officer, Berlin
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_blank">
+        <strong>Künstliche Intelligenz in der Fördermittelgewinnung</strong><br>
+        Leitung: Mira Pape, Fördermittelberaterin & Referentin, Lüneburg
+      </a>
+    </li>     
+  </ul>
+
+  <div class="mb-5">
+    <div class="text-3xl w-full font-bold">Fachgebiete und Kenntnisse</div>
+  </div>
+
+  <ul class="list-disc md:columns-3 columns-2 mx-6">
+    <li>Prompt Engineering</li>
+    <li>Custom GPTs</li>
+    <li>Fördermittelmanagement</li>
+    <li>Fördermittelberatung</li>
+    <li>Microsoft Excel</li>
+    <li>Python Code</li>
+  </ul>
+</BaseLayout>
