@@ -39,3 +39,5 @@ Nach bestandenem Test: git add + commit mit sprechender Nachricht (Build-Ausgabe
 Status in dieser Datei und in planung/PLAN.md auf "erledigt" setzen,
 kurz in Klartext erklären, was gebaut wurde und wie man es ausführt.
 Grounding-Befunde: 5 (impressum.astro hing mit ungenutzten Blog-Importen an der Collection; leere Collection erzeugt Build-Warnungen, daher Posts per import.meta.glob aus src/posts; dayjs nur im gelöschten PostLayout, Entfernung bleibt Segment 14; Inhalt nach E-08 in src/views; /blog liefert bis Segment 12 einen 404). Testposts angelegt und wieder gelöscht.
+
+Hinweis: Auf Wunsch von Alan ist der Punkt in „thoughts.“ nicht orange (weicht vom Handoff 6d ab).
