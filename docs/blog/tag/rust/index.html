@@ -1,5 +1,36 @@
-<!DOCTYPE html><html lang="en" data-theme="lofi"> <head><!-- Global Metadata --><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><link rel="icon" type="image/svg+xml" href="/favicon.svg"><meta name="generator" content="Astro v4.16.18"><!-- Primary Meta Tags --><title>Blog - rust</title><meta name="title" content="Blog - rust"><meta name="description" content="Porfolio von Alan"><!-- Open Graph / Facebook --><meta property="og:type" content="website"><meta property="og:url" content="https://alangawlik.de/blog/tag/rust/"><meta property="og:title" content="Blog - rust"><meta property="og:description" content="Porfolio von Alan"><meta property="og:image" content="https://alangawlik.de/social_img.webp"><!-- Twitter --><meta property="twitter:card" content="summary_large_image"><meta property="twitter:url" content="https://alangawlik.de/blog/tag/rust/"><meta property="twitter:title" content="Blog - rust"><meta property="twitter:description" content="Porfolio von Alan"><meta property="twitter:image" content="https://alangawlik.de/social_img.webp"><meta name="astro-view-transitions-enabled" content="true"><meta name="astro-view-transitions-fallback" content="animate"><link rel="icon" type="image/svg+xml" href="/favicon.ico"><link rel="stylesheet" href="/_astro/_page_.CUpy1TCW.css">
-<style>.time-line-container>div:last-child .education__time>.education__line{display:none}.hidden{display:none}.astro-route-announcer{position:absolute;left:0;top:0;clip:rect(0 0 0 0);clip-path:inset(50%);overflow:hidden;white-space:nowrap;width:1px;height:1px}
+<!DOCTYPE html><html lang="en"> <head><!-- Global Metadata --><meta charset="utf-8"><!-- Läuft inline im <head> vor dem ersten Rendern, damit nichts aufblitzt.
+     window.setTheme('light' | 'dark') setzt und speichert die Wahl (Schalter: Segment 04). --><script>
+  (function () {
+    var KEY = 'theme';
+    function stored() {
+      try {
+        var v = localStorage.getItem(KEY);
+        return v === 'light' || v === 'dark' ? v : null;
+      } catch (e) {
+        return null;
+      }
+    }
+    function system() {
+      return window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+    }
+    function apply(theme) {
+      document.documentElement.setAttribute('data-theme', theme);
+    }
+    window.setTheme = function (theme) {
+      if (theme !== 'light' && theme !== 'dark') return;
+      apply(theme);
+      try {
+        localStorage.setItem(KEY, theme);
+      } catch (e) {}
+    };
+    apply(stored() || system());
+    // Astro ViewTransitions tauscht <html>-Attribute beim Seitenwechsel aus
+    document.addEventListener('astro:after-swap', function () {
+      apply(stored() || system());
+    });
+  })();
+</script><meta name="viewport" content="width=device-width,initial-scale=1"><link rel="icon" type="image/svg+xml" href="/favicon.svg"><meta name="generator" content="Astro v4.16.18"><!-- Primary Meta Tags --><title>Blog - rust</title><meta name="title" content="Blog - rust"><meta name="description" content="Porfolio von Alan"><!-- Open Graph / Facebook --><meta property="og:type" content="website"><meta property="og:url" content="https://alangawlik.de/blog/tag/rust/"><meta property="og:title" content="Blog - rust"><meta property="og:description" content="Porfolio von Alan"><meta property="og:image" content="https://alangawlik.de/social_img.webp"><!-- Twitter --><meta property="twitter:card" content="summary_large_image"><meta property="twitter:url" content="https://alangawlik.de/blog/tag/rust/"><meta property="twitter:title" content="Blog - rust"><meta property="twitter:description" content="Porfolio von Alan"><meta property="twitter:image" content="https://alangawlik.de/social_img.webp"><meta name="astro-view-transitions-enabled" content="true"><meta name="astro-view-transitions-fallback" content="animate"><link rel="icon" type="image/svg+xml" href="/favicon.ico"><link rel="stylesheet" href="/_astro/_page_.BkVrscly.css">
+<style>:root{--font-display: "Gaegu", cursive;--font-body: "Karla", system-ui, sans-serif}:root,[data-theme=light]{--bg: #fbfaf7;--ink: #1f1c18;--coral: oklch(.64 .16 32);--coral-d: oklch(.55 .17 30);--coral-l: oklch(.83 .09 35);--text2: #45413a;--muted: #6b675f;--muted2: #a29d93;--stripe: #efece5;--line: #d6d0c4;--t0: #f3efe6;--t1: #f8e3da;--t2: #efe7d6;--t3: #f3efe6;--t4: #f7edd0;--t5: #f6ece6;--cur: url("data:image/svg+xml,%3Csvg xmlns=%22http%3A//www.w3.org/2000/svg%22 width=%2230%22 height=%2230%22%3E%3Cpath d=%22M4 3 C10 6 18 10 25 13 C20 14 16 15 14 16 C13 19 12 22 11 26 C9 18 6 10 4 3 Z%22 fill=%22%23fbfaf7%22 stroke=%22%231f1c18%22 stroke-width=%222.2%22 stroke-linejoin=%22round%22/%3E%3C/svg%3E") 4 3, auto}[data-theme=dark]{--bg: #1b1a18;--ink: #efe9de;--coral: oklch(.74 .14 34);--coral-d: oklch(.78 .12 36);--coral-l: oklch(.46 .1 32);--text2: #cfc8bc;--muted: #a39c90;--muted2: #6f6a62;--stripe: #26241f;--line: #3d3a34;--t0: #24221f;--t1: #33251f;--t2: #2b2720;--t3: #24221f;--t4: #2f2a1c;--t5: #2c2522;--cur: url("data:image/svg+xml,%3Csvg xmlns=%22http%3A//www.w3.org/2000/svg%22 width=%2230%22 height=%2230%22%3E%3Cpath d=%22M4 3 C10 6 18 10 25 13 C20 14 16 15 14 16 C13 19 12 22 11 26 C9 18 6 10 4 3 Z%22 fill=%22%231b1a18%22 stroke=%22%23efe9de%22 stroke-width=%222.2%22 stroke-linejoin=%22round%22/%3E%3C/svg%3E") 4 3, auto}html{background:var(--bg);color-scheme:light}html[data-theme=dark]{color-scheme:dark}body{background:var(--bg);color:var(--ink);cursor:var(--cur);font-family:var(--font-body);transition:background .35s,color .35s}a,button{cursor:pointer}@media (prefers-reduced-motion: reduce){body{transition:none}}@font-face{font-family:Gaegu;font-style:normal;font-display:swap;font-weight:400;src:url(/_astro/gaegu-latin-400-normal.BZ0xBS4u.woff2) format("woff2"),url(/_astro/gaegu-latin-400-normal.DYQdOmUf.woff) format("woff")}@font-face{font-family:Gaegu;font-style:normal;font-display:swap;font-weight:700;src:url(/_astro/gaegu-latin-700-normal.Cqd7nq5i.woff2) format("woff2"),url(/_astro/gaegu-latin-700-normal.BlI55G1I.woff) format("woff")}@font-face{font-family:Karla;font-style:normal;font-display:swap;font-weight:400;src:url(/_astro/karla-latin-400-normal.C_jajTY_.woff2) format("woff2"),url(/_astro/karla-latin-400-normal.iWRxgclR.woff) format("woff")}@font-face{font-family:Karla;font-style:normal;font-display:swap;font-weight:500;src:url(/_astro/karla-latin-500-normal.6wzn_4WC.woff2) format("woff2"),url(/_astro/karla-latin-500-normal.BWjg-GL4.woff) format("woff")}@font-face{font-family:Karla;font-style:normal;font-display:swap;font-weight:700;src:url(/_astro/karla-latin-700-normal.DFuMffT3.woff2) format("woff2"),url(/_astro/karla-latin-700-normal.CospC10L.woff) format("woff")}.astro-route-announcer{position:absolute;left:0;top:0;clip:rect(0 0 0 0);clip-path:inset(50%);overflow:hidden;white-space:nowrap;width:1px;height:1px}
 </style><script type="module" src="/_astro/hoisted.BScVxmeO.js"></script></head> <body class="flex justify-center items-center min-h-screen"> <div class="bg-base-100 w-full flex flex-col items-center"> <!--
 <div
   class="sticky lg:hidden top-0 z-30 flex h-16 w-full justify-center bg-opacity-90 backdrop-blur transition-all duration-100 bg-base-100 text-base-content shadow-sm"

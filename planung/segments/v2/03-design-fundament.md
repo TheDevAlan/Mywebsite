@@ -1,5 +1,5 @@
 # Segment 03: Design-Fundament (Farben, Hell/Dunkel, Schriften, Cursor) — daisyUI raus
-Status: offen · Hängt ab von: 02
+Status: erledigt · Hängt ab von: 02
 Aus: planung/changes/01-umbau-design-relaunch.md
 
 ## Kontext
@@ -41,4 +41,5 @@ Aus „Was NICHT kaputtgehen darf“ (Änderung 01). Alte Seiten dürfen optisch
 Nach bestandenem Test: git add + commit mit sprechender Nachricht (Build-Ausgabe `docs/` mitcommitten),
 Status in dieser Datei und in planung/PLAN.md auf "erledigt" setzen,
 kurz in Klartext erklären, was gebaut wurde und wie man es ausführt.
-Grounding-Befunde: _(trägt /dev-build ein)_
+Grounding-Befunde: 1 (global.css enthielt nur tote Alt-Regeln; ersetzt statt erweitert)
+Hinweis: Theme-Funktion `window.setTheme("light"|"dark")`, Speicherschlüssel `theme`; `pnpm-lock.yaml` nicht angefasst.
