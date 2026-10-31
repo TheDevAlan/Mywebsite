@@ -22,6 +22,9 @@ const de = {
   'about.linkedin': 'linkedin',
   'about.github': 'github',
   'about.coffee': 'kaffee spendieren',
+  'works.title': 'works',
+  'works.new': 'neu!',
+  'works.wip': 'in arbeit',
 } as const;
 
 export type UiKey = keyof typeof de;

@@ -1,0 +1,157 @@
+---
+// Seite "works" (6c). Routen: src/pages/works.astro (de), src/pages/en/works.astro (en)
+// Daten: src/data/projects.json. Englische Felder (category_en, title_en, description_en) sind
+// optional; fehlen sie, gilt der deutsche Text.
+import BaseLayout from "../layouts/BaseLayout.astro";
+import projects from "../data/projects.json";
+import { useTranslations, type Lang } from "../i18n/ui";
+
+export interface Props {
+  lang?: Lang;
+}
+const { lang = "de" } = Astro.props;
+const t = useTranslations(lang);
+
+interface Project {
+  category: string;
+  category_en?: string;
+  title: string;
+  title_en?: string;
+  description: string;
+  description_en?: string;
+  href: string;
+  isNew: boolean;
+  wip: boolean;
+}
+
+const pick = (de: string, en?: string) => (lang === "en" && en ? en : de);
+
+// Nach Kategorie gruppieren (Dateireihenfolge); globaler Index bestimmt den Kachel-Ton
+const groups: { name: string; items: { p: Project; tone: number }[] }[] = [];
+(projects as Project[]).forEach((p, i) => {
+  const name = pick(p.category, p.category_en);
+  let g = groups.find((x) => x.name === name);
+  if (!g) groups.push((g = { name, items: [] }));
+  g.items.push({ p, tone: (i * 5) % 6 });
+});
+---
+
+<BaseLayout lang={lang} active="works" stickySidebar>
+  <h1 class="sr">{t("works.title")}</h1>
+  <div class="works">
+    {
+      groups.map((g) => (
+        <section class="group">
+          <h2>{g.name}</h2>
+          <div class="grid">
+            {g.items.map(({ p, tone }) => (
+              <a class="tile" href={p.href} target="_blank" rel="noopener" style={`background:var(--t${tone})`}>
+                {p.isNew && <span class="badge">{t("works.new")}</span>}
+                <span class="title" lang="de">{pick(p.title, p.title_en)}</span>
+                <span class="desc">{pick(p.description, p.description_en)}</span>
+                {p.wip && <span class="stamp">{t("works.wip")}</span>}
+              </a>
+            ))}
+          </div>
+        </section>
+      ))
+    }
+  </div>
+</BaseLayout>
+
+<style>
+  .sr {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
+    clip: rect(0 0 0 0);
+    white-space: nowrap;
+  }
+  .works {
+    display: flex;
+    flex-direction: column;
+    gap: 52px;
+  }
+  .group {
+    display: flex;
+    flex-direction: column;
+    gap: 32px;
+  }
+  h2 {
+    margin: 0;
+    align-self: flex-start;
+    font-family: var(--font-display);
+    font-weight: 700;
+    font-size: 34px;
+    text-decoration: underline var(--coral);
+    text-decoration-thickness: 5px;
+    text-underline-offset: 6px;
+  }
+  .grid {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 40px 26px;
+  }
+  .tile {
+    position: relative;
+    aspect-ratio: 1;
+    box-sizing: border-box;
+    padding: 22px 20px 20px;
+    border-radius: 4px;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    color: var(--ink);
+    text-decoration: none;
+    transition: transform 0.2s, background 0.35s;
+  }
+  .tile:hover {
+    transform: translateY(-4px);
+  }
+  .title {
+    font-family: var(--font-display);
+    font-weight: 700;
+    font-size: 23px;
+    line-height: 1.05;
+    overflow-wrap: anywhere;
+    hyphens: auto;
+  }
+  .desc {
+    font-family: var(--font-body);
+    font-size: 13.5px;
+    line-height: 1.45;
+    color: var(--text2);
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 5;
+    line-clamp: 5;
+    overflow: hidden;
+  }
+  .badge {
+    position: absolute;
+    top: -12px;
+    right: -8px;
+    padding: 1px 10px;
+    background: var(--ink);
+    color: var(--bg);
+    font-family: var(--font-display);
+    font-weight: 700;
+    font-size: 19px;
+    border-radius: 20px 16px 22px 14px;
+    transform: rotate(10deg);
+  }
+  .stamp {
+    position: absolute;
+    bottom: 12px;
+    right: 8px;
+    padding: 1px 10px;
+    color: var(--coral-d);
+    border: 3px double var(--coral-d);
+    font-family: var(--font-display);
+    font-weight: 700;
+    font-size: 22px;
+    text-transform: uppercase;
+    transform: rotate(-12deg);
+  }
+</style>

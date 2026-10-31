@@ -25,7 +25,7 @@ Alle Workflow-Pfade `docs/…` gelten hier als `planung/…`.
 - [x] 05 — Zweisprachigkeit (DE/EN) → `planung/segments/v2/05-zweisprachigkeit.md`
 - [x] 06 — Doodle-Komponente und Startseite → `planung/segments/v2/06-startseite-doodle.md`
 - [x] 07 — about → `planung/segments/v2/07-about.md`
-- [ ] 08 — works → `planung/segments/v2/08-works.md`
+- [x] 08 — works → `planung/segments/v2/08-works.md`
 - [ ] 09 — thoughts → `planung/segments/v2/09-thoughts.md`
 - [ ] 10 — contact → `planung/segments/v2/10-contact.md`
 - [ ] 11 — Impressum und 404 → `planung/segments/v2/11-impressum-404.md`

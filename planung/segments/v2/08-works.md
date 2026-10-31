@@ -1,5 +1,5 @@
 # Segment 08: Seite „works“ mit Projektdaten aus einer Datei
-Status: offen · Hängt ab von: 05
+Status: erledigt · Hängt ab von: 05
 Aus: planung/changes/01-umbau-design-relaunch.md
 
 ## Kontext
@@ -39,4 +39,4 @@ Aus „Was NICHT kaputtgehen darf“ (Änderung 01). Noch nicht neu gebaute Seit
 Nach bestandenem Test: git add + commit mit sprechender Nachricht (Build-Ausgabe `docs/` mitcommitten),
 Status in dieser Datei und in planung/PLAN.md auf "erledigt" setzen,
 kurz in Klartext erklären, was gebaut wurde und wie man es ausführt.
-Grounding-Befunde: _(trägt /dev-build ein)_
+Grounding-Befunde: 4 (Abgleich alt/neu: nur LinkedIn-Link ohne Tracking und neues wip bei Einkaufsplaner ALPHA; Fettdruck "AI Impact Days" entfällt; src/data fehlte; Inhalt nach E-08 in src/views). EN-Felder: category_en, title_en, description_en, optional im selben Objekt.
