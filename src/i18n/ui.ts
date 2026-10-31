@@ -14,6 +14,14 @@ const de = {
   'home.doodleA': 'du am Schreibtisch, tief im Code',
   'home.doodleB': 'du schaust hoch und winkst',
   'home.claim': 'I build apps - for work, for life, for fun.',
+  'about.doodleA': 'du, winkend',
+  'about.doodleB': 'winkt zurück',
+  'about.title': 'KI-Enthusiast und Hobby-Entwickler',
+  'about.text':
+    'Auf dieser Webseite stelle ich meine Projekte vor, die den Workflow erleichtern und den Alltag bereichern sollen. Ich entwickle zudem maßgeschneiderte Code-Lösungen, die Arbeitsprozesse effizienter gestalten und repetitive Aufgaben automatisieren.',
+  'about.linkedin': 'linkedin',
+  'about.github': 'github',
+  'about.coffee': 'kaffee spendieren',
 } as const;
 
 export type UiKey = keyof typeof de;

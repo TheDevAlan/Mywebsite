@@ -1,5 +1,5 @@
 # Segment 07: Seite „about“
-Status: offen · Hängt ab von: 06
+Status: erledigt · Hängt ab von: 06
 Aus: planung/changes/01-umbau-design-relaunch.md
 
 ## Kontext
@@ -33,4 +33,4 @@ Aus „Was NICHT kaputtgehen darf“ (Änderung 01). Noch nicht neu gebaute Seit
 Nach bestandenem Test: git add + commit mit sprechender Nachricht (Build-Ausgabe `docs/` mitcommitten),
 Status in dieser Datei und in planung/PLAN.md auf "erledigt" setzen,
 kurz in Klartext erklären, was gebaut wurde und wie man es ausführt.
-Grounding-Befunde: _(trägt /dev-build ein)_
+Grounding-Befunde: 2 (Inhalt liegt seit Segment 05 in src/views plus zwei Routen-Dateien; BaseLayout-Standard-Padding und max-width widersprachen 6b, daher Eigenschaft `bare`)

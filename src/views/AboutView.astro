@@ -1,0 +1,81 @@
+---
+// Seite "about" (6b). Routen: src/pages/about.astro (de), src/pages/en/about.astro (en)
+import BaseLayout from "../layouts/BaseLayout.astro";
+import Doodle from "../components/Doodle.astro";
+import { useTranslations, type Lang } from "../i18n/ui";
+
+export interface Props {
+  lang?: Lang;
+}
+const { lang = "de" } = Astro.props;
+const t = useTranslations(lang);
+
+const links = [
+  { href: "https://www.linkedin.com/in/alan-gawlik-332202316/", label: t("about.linkedin") },
+  { href: "https://github.com/TheDevAlan", label: t("about.github") },
+  { href: "https://buymeacoffee.com/TheDevAlan", label: t("about.coffee") },
+];
+---
+
+<BaseLayout lang={lang} active="about" bare>
+  <div class="about">
+    <Doodle
+      name="about"
+      labelA={t("about.doodleA")}
+      labelB={t("about.doodleB")}
+      width={260}
+      height={200}
+      rotate={-2}
+      hoverRotate={2}
+      hoverScale={1.03}
+    />
+    <h1>{t("about.title")}</h1>
+    <p class="text">{t("about.text")}</p>
+    <p class="links">
+      {links.map((l) => <a href={l.href} target="_blank" rel="noopener">{l.label}</a>)}
+    </p>
+  </div>
+</BaseLayout>
+
+<style>
+  .about {
+    min-height: 100vh;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+    gap: 24px;
+    padding: 72px 96px 72px 24px;
+    max-width: 640px;
+  }
+  h1 {
+    margin: 8px 0 0;
+    font-family: var(--font-display);
+    font-weight: 700;
+    font-size: 48px;
+    line-height: 1.1;
+  }
+  .text {
+    margin: 0;
+    font-family: var(--font-body);
+    font-size: 16px;
+    line-height: 1.7;
+    color: var(--text2);
+  }
+  .links {
+    margin: 0;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 22px;
+    font-family: var(--font-display);
+    font-size: 22px;
+  }
+  .links a {
+    color: var(--ink);
+    text-decoration: none;
+  }
+  .links a:hover {
+    color: var(--coral);
+  }
+</style>
