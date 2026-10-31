@@ -1,5 +1,5 @@
 # Änderung 01: Design-Relaunch „lockeres Skizzenbuch“
-Typ: Umbau · Stand: 2026-10-31 · Status: geplant
+Typ: Umbau · Stand: 2026-10-31 · Status: in Umsetzung
 Zweig: change/01-design-relaunch
 
 > Ablage-Hinweis: Planungsdokumente liegen in `planung/`, **nicht** in `docs/`.
@@ -109,4 +109,23 @@ Zweig `change/01-design-relaunch`. Der Zweig `main` (= die live veröffentlichte
 Zurück zum alten Stand: `git checkout main` — dann hast du wieder exakt die bisherige Seite. Wenn nach einer Zusammenführung etwas schiefgeht: `git revert` auf den Merge-Commit macht ihn rückgängig, ohne Verlauf zu löschen.
 
 ## Segmente
-Ablage: `planung/segments/v2/` — _(Ordner und Inhalt legt /dev-split-code an; `v2`, weil es noch keine Segmente gibt und `v1` der Erstbau wäre.)_
+Ablage: `planung/segments/v2/` (`v2`, weil es noch keine Segmente gab und `v1` der Erstbau wäre).
+
+Reihenfolge nach Abhängigkeit und Risiko: erst Auslieferung absichern (Domain), dann Altlasten weg, dann das Fundament, auf dem alles steht (Farben/Theme, Layout, Sprachmechanismus — hier sitzt das größte Risiko), danach die Seiten, zum Schluss Weiterleitungen, Mobil und Aufräumen.
+
+- [ ] 01 — Auslieferung absichern (CNAME & .nojekyll) → `planung/segments/v2/01-auslieferung-absichern.md`
+- [ ] 02 — Altlasten entfernen (Lebenslauf, Services, Store, RSS) → `planung/segments/v2/02-altlasten-entfernen.md`
+- [ ] 03 — Design-Fundament (Farben, Hell/Dunkel, Schriften, Cursor), daisyUI raus → `planung/segments/v2/03-design-fundament.md`
+- [ ] 04 — Gemeinsames Layout mit Sidebar und Theme-Schalter → `planung/segments/v2/04-layout-sidebar.md`
+- [ ] 05 — Zweisprachigkeit: Mechanismus und Sprachumschalter → `planung/segments/v2/05-zweisprachigkeit.md`
+- [ ] 06 — Doodle-Komponente und neue Startseite → `planung/segments/v2/06-startseite-doodle.md`
+- [ ] 07 — Seite „about“ → `planung/segments/v2/07-about.md`
+- [ ] 08 — Seite „works“ mit Projektdaten aus einer Datei → `planung/segments/v2/08-works.md`
+- [ ] 09 — Seite „thoughts“ (Blog) mit Detailseite → `planung/segments/v2/09-thoughts.md`
+- [ ] 10 — Seite „contact“ → `planung/segments/v2/10-contact.md`
+- [ ] 11 — Impressum und 404 im neuen Stil → `planung/segments/v2/11-impressum-404.md`
+- [ ] 12 — Weiterleitungen alter Adressen, alte Projektseite weg → `planung/segments/v2/12-weiterleitungen.md`
+- [ ] 13 — Mobil-Ansicht und reduzierte Bewegung → `planung/segments/v2/13-mobil-reduced-motion.md`
+- [ ] 14 — Abschluss: Reste aufräumen und Gesamtprüfung → `planung/segments/v2/14-abschluss-aufraeumen.md`
+
+Hinweis Zwischenstand: Ab Segment 03 sehen die noch nicht ersetzten alten Seiten roh aus (daisyUI entfernt). Das ist gewollt; live bleibt `main`.
