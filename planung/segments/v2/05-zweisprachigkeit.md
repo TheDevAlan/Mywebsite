@@ -1,5 +1,5 @@
 # Segment 05: Zweisprachigkeit (DE/EN) — Mechanismus und Sprachumschalter
-Status: offen · Hängt ab von: 04
+Status: erledigt · Hängt ab von: 04
 Aus: planung/changes/01-umbau-design-relaunch.md
 
 ## Kontext
@@ -40,4 +40,5 @@ Aus „Was NICHT kaputtgehen darf“ (Änderung 01). Noch nicht neu gebaute Seit
 Nach bestandenem Test: git add + commit mit sprechender Nachricht (Build-Ausgabe `docs/` mitcommitten),
 Status in dieser Datei und in planung/PLAN.md auf "erledigt" setzen,
 kurz in Klartext erklären, was gebaut wurde und wie man es ausführt.
-Grounding-Befunde: _(trägt /dev-build ein)_
+Grounding-Befunde: 2 (kein i18n-Block in astro.config nötig, eigene Hilfen gewählt; bestehende Startseite ist Wegwerf-Nachweis bis Segment 06)
+Hinweis: Muster siehe planung/decisions.md E-08. Auf /en/ erscheint `footer.legal` bewusst auf Deutsch (Alan liefert Übersetzung); Sprachwechsel führt auf Seiten ohne Gegenseite bis Segment 06–11 zu 404.

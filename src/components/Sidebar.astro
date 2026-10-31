@@ -1,26 +1,38 @@
 ---
 // Linke Spalte: Logo, Navigation, Sprach- und Theme-Umschalter, Footer.
 // Maße und Schriften: planung/design-handoff/README.md, Abschnitt "Globales Layout".
+import { languages, useTranslations, type Lang } from '../i18n/ui';
+import { localePath, switchLangPath } from '../i18n/utils';
+
 export interface Props {
   active?: 'about' | 'works' | 'thoughts' | 'contact';
   sticky?: boolean;
+  lang?: Lang;
 }
 
-const { active, sticky = false } = Astro.props;
+const { active, sticky = false, lang = 'de' } = Astro.props;
+const t = useTranslations(lang);
 const year = new Date().getFullYear();
 
+// Navigationsbegriffe bleiben in beiden Sprachen englisch
 const nav = [
-  { id: 'about', href: '/about' },
-  { id: 'works', href: '/works' },
-  { id: 'thoughts', href: '/thoughts' },
-  { id: 'contact', href: '/contact' },
+  { id: 'about', href: localePath('/about', lang) },
+  { id: 'works', href: localePath('/works', lang) },
+  { id: 'thoughts', href: localePath('/thoughts', lang) },
+  { id: 'contact', href: localePath('/contact', lang) },
 ] as const;
+const langLinks = (Object.keys(languages) as Lang[]).map((code) => ({
+  code,
+  label: languages[code],
+  href: switchLangPath(Astro.url.pathname, code),
+  current: code === lang,
+}));
 ---
 
 <aside class:list={['sidebar', { sticky }]}>
-  <a class="logo" href="/" aria-label="alan. – Startseite">alan<span class="dot">.</span></a>
+  <a class="logo" href={localePath('/', lang)} aria-label={t('sidebar.home')}>alan<span class="dot">.</span></a>
 
-  <nav class="nav" aria-label="Hauptnavigation">
+  <nav class="nav" aria-label={t('sidebar.navLabel')}>
     {
       nav.map((item) => (
         <a
@@ -34,10 +46,23 @@ const nav = [
     }
   </nav>
 
-  <div class="switch lang" aria-label="Sprache">
-    <span class="on">DE</span>
-    <span class="slash">/</span>
-    <span class="off">EN</span>
+  <div class="switch lang" role="group" aria-label={t('sidebar.langLabel')}>
+    {
+      langLinks.map((l, i) => (
+        <>
+          {i > 0 && <span class="slash">/</span>}
+          {l.current ? (
+            <span class="on" aria-current="true">
+              {l.label}
+            </span>
+          ) : (
+            <a class="off" href={l.href} hreflang={l.code} lang={l.code}>
+              {l.label}
+            </a>
+          )}
+        </>
+      ))
+    }
   </div>
 
   <div class="switch theme">
@@ -57,7 +82,7 @@ const nav = [
 
   <footer class="foot">
     <span>&copy; {year} Alan Gawlik</span>
-    <a href="/impressum">Datenschutz &amp; Impressum</a>
+    <a href={localePath('/impressum', lang)}>{t('footer.legal')}</a>
   </footer>
 </aside>
 
@@ -141,6 +166,11 @@ const nav = [
   }
   .lang .off {
     color: var(--muted);
+    text-decoration: none;
+    transition: color 0.2s;
+  }
+  .lang a.off:hover {
+    color: var(--coral);
   }
   .slash {
     color: var(--muted2);

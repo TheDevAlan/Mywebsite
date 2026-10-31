@@ -3,12 +3,15 @@ import BaseHead from "../components/BaseHead.astro";
 import Sidebar from "../components/Sidebar.astro";
 
 import { SITE_TITLE, SITE_DESCRIPTION } from "../config";
+import type { Lang } from "../i18n/ui";
 
 export interface Props {
   title?: string;
   description?: string;
   image?: string;
   ogType?: string;
+  /** Sprache der Seite: de (ohne Präfix) oder en (/en/...) */
+  lang?: Lang;
   /** Aktiver Navigationspunkt; Startseite und Rechtliches: keiner */
   active?: "about" | "works" | "thoughts" | "contact";
   /** Sidebar bleibt beim Scrollen stehen (works) */
@@ -22,6 +25,7 @@ const {
   title = SITE_TITLE,
   description = SITE_DESCRIPTION,
   ogType,
+  lang = "de",
   active,
   stickySidebar = false,
   fullHeight = false,
@@ -29,14 +33,14 @@ const {
 ---
 
 <!doctype html>
-<html lang="en">
+<html lang={lang}>
   <head>
     <BaseHead title={title} description={description} image={image} ogType={ogType} />
     <link rel="icon" type="image/svg+xml" href="/favicon.ico" />
   </head>
   <body>
     <div class="layout">
-      <Sidebar active={active} sticky={stickySidebar} />
+      <Sidebar active={active} sticky={stickySidebar} lang={lang} />
       <main class:list={["main", { full: fullHeight }]}>
         <slot />
       </main>

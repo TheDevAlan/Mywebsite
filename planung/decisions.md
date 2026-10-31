@@ -39,3 +39,9 @@ Format: Kontext · Alternativen · Begründung · Konsequenz.
 **Kontext:** Feed ist bereits defekt (Build-Warnung); Blog ist künftig „thoughts“.
 **Begründung:** Von Alan so entschieden.
 **Konsequenz:** `src/pages/rss.xml.js` und `@astrojs/rss` werden entfernt.
+
+## E-08 — Sprachmuster: eigene Pfad-Hilfen und Wörterbuch statt Astro-i18n (2026-10-31)
+**Kontext:** Segment 05 legt fest, wie alle Seiten zweisprachig gebaut werden (Deutsch ohne Präfix, Englisch unter `/en/`).
+**Alternativen:** Astro-`i18n`-Konfiguration samt `fallback`/`getRelativeLocaleUrl`; eigene Hilfen.
+**Begründung:** Astros statischer Fallback kann auf die deutsche Seite weiterleiten statt eine englische URL zu liefern. Eigene Hilfen (`src/i18n/ui.ts`, `src/i18n/utils.ts`) leiten nie um, der Rückfall läuft über das Wörterbuch.
+**Konsequenz:** Jede Seite = Komponente in `src/views/` mit `lang`-Prop plus zwei dünne Routen-Dateien (`src/pages/…`, `src/pages/en/…`); Layout und Sidebar bekommen `lang`. Neue Texte stehen in `ui.ts`; fehlt der englische Eintrag, erscheint Deutsch (`footer.legal` ist dafür bewusst ungesetzt).

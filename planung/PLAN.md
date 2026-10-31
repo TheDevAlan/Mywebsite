@@ -22,7 +22,7 @@ Alle Workflow-Pfade `docs/…` gelten hier als `planung/…`.
 - [x] 02 — Altlasten entfernen (Lebenslauf, Services, Store, RSS) → `planung/segments/v2/02-altlasten-entfernen.md`
 - [x] 03 — Design-Fundament, daisyUI raus → `planung/segments/v2/03-design-fundament.md`
 - [x] 04 — Layout mit Sidebar und Theme-Schalter → `planung/segments/v2/04-layout-sidebar.md`
-- [ ] 05 — Zweisprachigkeit (DE/EN) → `planung/segments/v2/05-zweisprachigkeit.md`
+- [x] 05 — Zweisprachigkeit (DE/EN) → `planung/segments/v2/05-zweisprachigkeit.md`
 - [ ] 06 — Doodle-Komponente und Startseite → `planung/segments/v2/06-startseite-doodle.md`
 - [ ] 07 — about → `planung/segments/v2/07-about.md`
 - [ ] 08 — works → `planung/segments/v2/08-works.md`
