@@ -1,5 +1,5 @@
 # Segment 01: Auslieferung absichern (CNAME & .nojekyll)
-Status: offen · Hängt ab von: —
+Status: erledigt · Hängt ab von: —
 Aus: planung/changes/01-umbau-design-relaunch.md
 
 ## Kontext
@@ -34,4 +34,5 @@ Aus „Was NICHT kaputtgehen darf“ (Änderung 01). Seiten, die noch nicht neu 
 Nach bestandenem Test: git add + commit mit sprechender Nachricht (Build-Ausgabe `docs/` wie bisher mitcommitten),
 Status in dieser Datei und in planung/PLAN.md auf "erledigt" setzen,
 kurz in Klartext erklären, was gebaut wurde und wie man es ausführt.
-Grounding-Befunde: _(trägt /dev-build ein)_
+Grounding-Befunde: 0
+Beobachtung: Ein Build leert `docs/` vollständig (gemessen mit Marker-Datei); `CNAME`/`.nojekyll` kommen jetzt aus `public/`.
