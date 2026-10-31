@@ -1,58 +1,47 @@
-# Alan's Website
+# alangawlik.de
 
-Willkommen auf der offiziellen Website von Alan! Diese Website ist eine Sammlung von Projekten und KI-Assistenzlösungen, die entwickelt wurden, um den Workflow zu erleichtern und den Alltag zu bereichern.
+Persönliche Webseite von Alan Gawlik: Projekte, kurze Texte, Kontakt. Live unter https://alangawlik.de (GitHub Pages).
+Gebaut mit [Astro](https://astro.build/) 4 und Tailwind (nur Basis-Reset), zweisprachig (Deutsch und Englisch), Hell- und Dunkelmodus.
 
-## Inhaltsverzeichnis
+## Seiten
 
-- [Über das Projekt](#über-das-projekt)
-- [Technologien](#technologien)
-- [Installation](#installation)
-- [Verwendung](#verwendung)
-- [Beitragen](#beitragen)
-- [Lizenz](#lizenz)
+| Deutsch | Englisch | Inhalt |
+|---|---|---|
+| `/` | `/en/` | Startseite mit Doodle |
+| `/about` | `/en/about` | Über mich |
+| `/works` | `/en/works` | 17 Projekte als Kacheln |
+| `/thoughts` | `/en/thoughts` | Liste kurzer Texte, Detailseite `/thoughts/<name>` |
+| `/contact` | `/en/contact` | Mail, GitHub, LinkedIn, Buy me a coffee |
+| `/impressum` | `/en/impressum` | Datenschutz und Impressum |
 
-## Über das Projekt
+Die alten Adressen `/projects` und `/blog` leiten auf `/works` bzw. `/thoughts` weiter (Weiterleitungsseiten, GitHub Pages kann kein 301).
+Navigationsbegriffe bleiben in beiden Sprachen englisch. Fehlt ein englischer Text, erscheint der deutsche.
 
-Diese Website präsentiert verschiedene KI-Assistenzlösungen und maßgeschneiderte Code-Lösungen. Die Projekte sind darauf ausgelegt, Arbeitsprozesse effizienter zu gestalten und repetitive Aufgaben zu automatisieren.
+## Lokal starten
 
-## Technologien
+```bash
+npm install
+npm run dev        # http://localhost:4321
+npm run build      # schreibt die fertige Seite nach docs/
+npm run preview    # gebaute Seite ansehen, http://localhost:4321
+```
 
-- [Astro](https://astro.build/) - Ein modernes Framework für statische Websites
-- [Node.js](https://nodejs.org/) - JavaScript-Laufzeitumgebung
-- [GitHub Pages](https://pages.github.com/) - Hosting für statische Websites
+## Wo pflege ich was?
 
-## Installation
+- **Projekte:** `src/data/projects.json`. Felder: `category`, `title`, `description`, `href`, `isNew`, `wip`. Englische Texte optional als `category_en`, `title_en`, `description_en`.
+- **Texte der Seiten und der Oberfläche:** `src/i18n/ui.ts` (Deutsch und Englisch; fehlt der englische Eintrag, erscheint Deutsch).
+- **Thoughts (Blogposts):** Markdown-Dateien in `src/posts/de/<name>.md` und `src/posts/en/<name>.md`. Pflichtfelder im Kopf: `title`, `description`, `pubDate` (z. B. `2026-10-31`). Eine englische Fassung gehört zur deutschen, wenn die Datei gleich heißt. `.mdx` ist ebenfalls erlaubt.
+- **Doodles:** Zeichnungen in `public/doodles/` als `home-a.svg` und `home-b.svg`, ebenso `about-`, `thoughts-` und `contact-` (auch `.png`). Fehlt eine der beiden Dateien eines Doodles, erscheint der Platzhalter.
+- **Farben, Schriften, Cursor:** `src/styles/global.css`. Die Schriften (Gaegu, Karla) liegen lokal über `@fontsource`.
 
-Um das Projekt lokal auszuführen, folge diesen Schritten:
+## Veröffentlichung
 
-1. Klone das Repository:
-   ```bash
-   git clone https://github.com/DEIN-USERNAME/DEIN-REPO-NAME.git
-   ```
+`npm run build` schreibt nach `docs/` (`outDir` in `astro.config.mjs`). GitHub Pages liefert den Ordner `docs/` des Zweigs `main` aus. `CNAME` (Domain) und `.nojekyll` liegen in `public/` und werden beim Build mit nach `docs/` kopiert. Die Build-Ausgabe `docs/` wird mit eingecheckt.
 
-2. Navigiere in das Projektverzeichnis:
-   ```bash
-   cd DEIN-REPO-NAME
-   ```
+## Planung
 
-3. Installiere die Abhängigkeiten:
-   ```bash
-   npm install
-   ```
-
-4. Starte den lokalen Server:
-   ```bash
-   npm run dev
-   ```
-
-## Verwendung
-
-Nach dem Start des lokalen Servers kannst du die Website in deinem Browser unter `http://localhost:3000` aufrufen.
-
-## Beitragen
-
-Beiträge sind willkommen! Bitte öffne ein Issue oder erstelle einen Pull-Request, um deine Änderungen vorzuschlagen.
+Planung, Entscheidungen und Segmente liegen in `planung/` (nicht in `docs/`, das ist die öffentliche Build-Ausgabe): `planung/PLAN.md`, `planung/decisions.md`, `planung/changes/`, `planung/segments/`. Die Design-Vorlage steht in `planung/design-handoff/`.
 
 ## Lizenz
 
-Dieses Projekt ist unter der MIT-Lizenz lizenziert. Siehe die [LICENSE](LICENSE) Datei für weitere Informationen.
+MIT, siehe [LICENSE](LICENSE).

@@ -1,5 +1,5 @@
 # Änderung 01: Design-Relaunch „lockeres Skizzenbuch“
-Typ: Umbau · Stand: 2026-10-31 · Status: in Umsetzung
+Typ: Umbau · Stand: 2026-10-31 · Status: umgesetzt — wartet auf Veröffentlichung
 Zweig: change/01-design-relaunch
 
 > Ablage-Hinweis: Planungsdokumente liegen in `planung/`, **nicht** in `docs/`.
@@ -103,6 +103,24 @@ Keine Datenbank, keine Nutzerdaten. Inhalte, die umziehen:
 Es gab bisher keine `decisions.md`; sie wird mit dieser Änderung angelegt (`planung/decisions.md`). Einzige historische Spur:
 CNAME wurde per Commit entfernt und wieder angelegt (`e7ee787`, `ce4700f`) — wird bewusst abgesichert, nicht „aufgeräumt“.
 Das Impressum enthält die Anschrift; sie bleibt unverändert. Die Telefonnummer wurde auf Wunsch von Alan nach Segment 11 entfernt.
+
+## Gesamtprüfung (Segment 14)
+Geprüft gegen den gebauten Stand (`npm run build`, `astro preview`, Edge per Skript). Nicht geprüft: echtes Handy, Safari/Firefox.
+
+| Punkt | Ergebnis |
+|---|---|
+| Domain/Auslieferung | `docs/CNAME` = `alangawlik.de`, `docs/.nojekyll` vorhanden — bestanden |
+| Build | 13 Seiten, keine Fehler, keine Warnungen (auch `npm ci` in sauberer Kopie) — bestanden |
+| Projekte | 17 Kacheln auf `/works`, alle Links gleich der alten Seite (ohne Tracking), alle im neuen Tab — bestanden |
+| Impressum/Datenschutz | Wortlaut gleich `main`, nur die Telefonnummer fehlt (von Alan nach Segment 11 so gewünscht) — bestanden |
+| Kontaktwege | Mail, GitHub, LinkedIn, Buy me a coffee auf `/contact` und `/en/contact`; GitHub und LinkedIn auf `/about` und `/en/about` — bestanden |
+| Sitemap & robots | 12 aktuelle Seiten, keine veralteten; **Fund:** `robots.txt` zeigte (auch auf `main`) auf die Sitemap der Vorlage `astrofy-template.netlify.app`, jetzt `https://alangawlik.de/sitemap-index.xml` — behoben |
+| Alte Links | `/projects` → `/works`, `/blog` → `/thoughts` (Weiterleitungsseiten) — bestanden |
+| Theme | Erstbesuch folgt System (hell und dunkel), Wahl bleibt nach Seitenwechsel, gespeicherte Wahl schlägt System, Inline-Skript im head vor Body — bestanden |
+| Sprache | Alle 6 Seiten DE ↔ EN, Umschalter springt auf gleiche Seite, Navigation englisch — bestanden |
+| Mobil | 360/500/800/1100 px ohne Überlauf, Touch-Flächen 44 px, works 1/2/2/3 Spalten, Hover bei „Bewegung reduzieren“ aus — bestanden |
+
+Offene Nebenbefunde (bewusst nicht Teil dieser Änderung): `pnpm-lock.yaml` ist veraltet; `.astro/` ist getrackt; `/social_img.webp` fehlt; `public/Profil/` und `docs/Profil/` ungenutzt; `npm audit` meldet Schwachstellen in Astro-Werkzeugen (die Seite liefert nur statische Dateien aus, nichts davon läuft live).
 
 ## Rollback
 Zweig `change/01-design-relaunch`. Der Zweig `main` (= die live veröffentlichte Seite) bleibt unangetastet, bis du bewusst zusammenführst.

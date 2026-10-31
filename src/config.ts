@@ -1,5 +1,4 @@
-// Place any global data in this file.
-// You can import this data from anywhere in your site by using the `import` keyword.
+// Globale Standardwerte für Seitentitel und -beschreibung (genutzt in src/layouts/BaseLayout.astro).
 
 export const SITE_TITLE = 'Home';
 export const SITE_DESCRIPTION = 'Porfolio von Alan';
