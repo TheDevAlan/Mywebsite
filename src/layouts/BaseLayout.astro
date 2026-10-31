@@ -1,6 +1,7 @@
 ---
 import BaseHead from "../components/BaseHead.astro";
 import Sidebar from "../components/Sidebar.astro";
+import SiteFooter from "../components/SiteFooter.astro";
 
 import { SITE_TITLE, SITE_DESCRIPTION } from "../config";
 import type { Lang } from "../i18n/ui";
@@ -47,6 +48,10 @@ const {
       <main class:list={["main", { full: fullHeight, bare }]}>
         <slot />
       </main>
+      <!-- Nur mobil sichtbar; am Desktop steht die Fußzeile in der Sidebar -->
+      <div class="mobile-foot">
+        <SiteFooter lang={lang} />
+      </div>
     </div>
   </body>
 </html>
@@ -68,5 +73,30 @@ const {
   .main.bare {
     padding: 0;
     max-width: none;
+  }
+  .mobile-foot {
+    display: none;
+  }
+
+  /* Mobil: eine Spalte, Sidebar ist die Leiste oben (siehe Sidebar.astro) */
+  @media (max-width: 800px) {
+    .layout {
+      grid-template-columns: minmax(0, 1fr);
+      min-height: 0;
+    }
+    .main {
+      padding: 24px 20px 48px;
+      max-width: none;
+    }
+    .main.full {
+      min-height: 0;
+    }
+    .main.bare {
+      padding: 0;
+    }
+    .mobile-foot {
+      display: block;
+      padding: 8px 20px 32px;
+    }
   }
 </style>

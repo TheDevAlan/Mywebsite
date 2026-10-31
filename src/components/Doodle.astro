@@ -118,4 +118,20 @@ const hasImages = Boolean(imgA && imgB);
     clip: rect(0 0 0 0);
     white-space: nowrap;
   }
+
+  @media (max-width: 800px) {
+    .doodle {
+      max-width: 80%;
+    }
+  }
+
+  /* Die Grundneigung bleibt (Design), nur die Hover-Bewegung entfällt */
+  @media (prefers-reduced-motion: reduce) {
+    .doodle {
+      transition: none;
+    }
+    .doodle:hover {
+      transform: rotate(var(--r));
+    }
+  }
 </style>

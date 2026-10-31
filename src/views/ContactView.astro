@@ -164,4 +164,43 @@ const pills = [
     outline: 2px solid var(--coral);
     outline-offset: 4px;
   }
+
+  /* Mobil: Doodle steht statisch über der Überschrift (Handoff, Responsive) */
+  @media (max-width: 800px) {
+    .contact {
+      min-height: 0;
+      justify-content: flex-start;
+      gap: 18px;
+      padding: 24px 20px 40px;
+    }
+    .doodle {
+      position: static;
+      width: 100%;
+    }
+    h1 {
+      font-size: 44px;
+    }
+    .mail {
+      font-size: 22px;
+      overflow-wrap: anywhere;
+    }
+    .pills {
+      gap: 12px;
+      margin-top: 12px;
+    }
+    .pill {
+      font-size: 20px;
+    }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .mail,
+    .pill {
+      transition: background 0.2s;
+    }
+    .mail:hover,
+    .pill:hover {
+      transform: none;
+    }
+  }
 </style>

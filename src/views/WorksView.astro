@@ -154,4 +154,32 @@ const groups: { name: string; items: { p: Project; tone: number }[] }[] = [];
     text-transform: uppercase;
     transform: rotate(-12deg);
   }
+
+  /* Raster: 3 Spalten, bis 800 px 2, unter 500 px 1 */
+  @media (max-width: 800px) {
+    .works {
+      gap: 40px;
+    }
+    .grid {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 32px 20px;
+    }
+    h2 {
+      font-size: 28px;
+    }
+  }
+  @media (max-width: 499px) {
+    .grid {
+      grid-template-columns: minmax(0, 1fr);
+    }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .tile {
+      transition: background 0.35s;
+    }
+    .tile:hover {
+      transform: none;
+    }
+  }
 </style>

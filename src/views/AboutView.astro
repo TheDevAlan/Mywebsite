@@ -78,4 +78,20 @@ const links = [
   .links a:hover {
     color: var(--coral);
   }
+
+  @media (max-width: 800px) {
+    .about {
+      min-height: 0;
+      justify-content: flex-start;
+      gap: 20px;
+      padding: 24px 20px 40px;
+      max-width: none;
+    }
+    h1 {
+      font-size: 38px;
+    }
+    .links {
+      gap: 14px 22px;
+    }
+  }
 </style>

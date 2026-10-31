@@ -110,4 +110,22 @@ const { lang = "de" } = Astro.props;
   ul {
     padding-left: 1.4em;
   }
+
+  @media (max-width: 800px) {
+    .legal {
+      box-sizing: border-box;
+      max-width: 100%;
+      padding: 24px 20px 40px;
+      overflow-wrap: anywhere;
+    }
+    h1 {
+      font-size: 38px;
+    }
+    h2 {
+      font-size: 28px;
+    }
+    h3 {
+      font-size: 24px;
+    }
+  }
 </style>

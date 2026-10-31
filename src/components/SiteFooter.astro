@@ -1,0 +1,37 @@
+---
+// Fußzeile: Copyright und Impressum-Link.
+// Desktop: unten in der Sidebar. Mobil: am Seitenende (siehe BaseLayout).
+import { useTranslations, type Lang } from '../i18n/ui';
+import { localePath } from '../i18n/utils';
+
+export interface Props {
+  lang?: Lang;
+}
+
+const { lang = 'de' } = Astro.props;
+const t = useTranslations(lang);
+const year = new Date().getFullYear();
+---
+
+<footer class="foot">
+  <span>&copy; {year} Alan Gawlik</span>
+  <a href={localePath('/impressum', lang)}>{t('footer.legal')}</a>
+</footer>
+
+<style>
+  .foot {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    font-family: var(--font-body);
+    font-size: 12px;
+    color: var(--muted);
+  }
+  .foot a {
+    color: var(--muted);
+    text-decoration: none;
+  }
+  .foot a:hover {
+    color: var(--coral);
+  }
+</style>

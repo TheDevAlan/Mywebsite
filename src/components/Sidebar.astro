@@ -3,6 +3,7 @@
 // Maße und Schriften: planung/design-handoff/README.md, Abschnitt "Globales Layout".
 import { languages, useTranslations, type Lang } from '../i18n/ui';
 import { localePath, switchLangPath } from '../i18n/utils';
+import SiteFooter from './SiteFooter.astro';
 
 export interface Props {
   active?: 'about' | 'works' | 'thoughts' | 'contact';
@@ -12,7 +13,6 @@ export interface Props {
 
 const { active, sticky = false, lang = 'de' } = Astro.props;
 const t = useTranslations(lang);
-const year = new Date().getFullYear();
 
 // Navigationsbegriffe bleiben in beiden Sprachen englisch
 const nav = [
@@ -80,10 +80,9 @@ const langLinks = (Object.keys(languages) as Lang[]).map((code) => ({
     </button>
   </div>
 
-  <footer class="foot">
-    <span>&copy; {year} Alan Gawlik</span>
-    <a href={localePath('/impressum', lang)}>{t('footer.legal')}</a>
-  </footer>
+  <div class="side-foot">
+    <SiteFooter lang={lang} />
+  </div>
 </aside>
 
 <script>
@@ -206,21 +205,85 @@ const langLinks = (Object.keys(languages) as Lang[]).map((code) => ({
     color: var(--ink);
   }
 
-  .foot {
+  .side-foot {
     margin-top: auto;
     padding-top: 40px;
-    display: flex;
-    flex-direction: column;
-    gap: 4px;
-    font-family: var(--font-body);
-    font-size: 12px;
-    color: var(--muted);
   }
-  .foot a {
-    color: var(--muted);
-    text-decoration: none;
+
+  /* Mobil (Vorschlag aus planung/design-handoff/README.md, Responsive):
+     Sidebar wird zur Leiste oben. Logo links, DE/EN und Theme rechts, Navigation als Zeile darunter.
+     Die Fußzeile steht mobil am Seitenende (BaseLayout), nicht in der Leiste. */
+  @media (max-width: 800px) {
+    .sidebar {
+      display: grid;
+      grid-template-columns: 1fr auto auto;
+      grid-template-areas:
+        'logo lang theme'
+        'nav nav nav';
+      align-items: center;
+      column-gap: 14px;
+      min-height: auto;
+      padding: 8px 20px 0;
+    }
+    .sidebar.sticky {
+      position: static;
+    }
+    .logo {
+      grid-area: logo;
+      font-size: 40px;
+    }
+    .nav {
+      grid-area: nav;
+      margin-top: 0;
+      flex-direction: row;
+      flex-wrap: wrap;
+      gap: 0 18px;
+      font-size: 22px;
+    }
+    .nav a {
+      display: inline-flex;
+      align-items: center;
+      min-height: 44px;
+    }
+    .lang {
+      grid-area: lang;
+      margin-top: 0;
+      font-size: 20px;
+      gap: 4px;
+    }
+    .lang .on,
+    .lang .off {
+      display: inline-flex;
+      align-items: center;
+      min-height: 44px;
+      padding: 0 4px;
+    }
+    .theme {
+      grid-area: theme;
+      margin-top: 0;
+      gap: 0;
+    }
+    .theme-btn {
+      min-width: 44px;
+      min-height: 44px;
+      align-items: center;
+      justify-content: center;
+    }
+    .theme .slash {
+      display: none;
+    }
+    .side-foot {
+      display: none;
+    }
   }
-  .foot a:hover {
-    color: var(--coral);
+
+  @media (prefers-reduced-motion: reduce) {
+    .theme-btn {
+      transition: color 0.2s;
+    }
+    .sun:hover,
+    .moon:hover {
+      transform: none;
+    }
   }
 </style>
