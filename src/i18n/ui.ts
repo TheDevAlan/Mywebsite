@@ -37,6 +37,8 @@ const de = {
   'contact.github': 'github',
   'contact.linkedin': 'linkedin',
   'contact.coffee': 'buy me a coffee',
+  'notfound.text': 'Hier ist nichts. Vielleicht hast du dich verlaufen.',
+  'notfound.home': 'zur startseite',
 } as const;
 
 export type UiKey = keyof typeof de;

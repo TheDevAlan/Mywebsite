@@ -1,0 +1,114 @@
+---
+// Datenschutz & Impressum. Routen: src/pages/impressum.astro (de), src/pages/en/impressum.astro (en)
+// ACHTUNG Rechtstext: Der Wortlaut ist unverändert aus der früheren Fassung übernommen (git show main:src/pages/impressum.astro).
+// Nicht umformulieren und keine Gesetzesverweise "korrigieren". Er bleibt in beiden Sprachen deutsch.
+import BaseLayout from "../layouts/BaseLayout.astro";
+import type { Lang } from "../i18n/ui";
+
+export interface Props {
+  lang?: Lang;
+}
+const { lang = "de" } = Astro.props;
+---
+
+<BaseLayout lang={lang} title="Datenschutz & Impressum" bare>
+  <div class="legal">
+    <h1>Datenschutz & Impressum</h1>
+
+    <h2>Datenschutz</h2>
+    <p>
+      Wir nehmen den Schutz Ihrer persönlichen Daten sehr ernst und halten uns strikt an die Regeln der Datenschutzgesetze. Personenbezogene Daten werden auf dieser Webseite nur im technisch notwendigen Umfang erhoben. In keinem Fall werden die erhobenen Daten verkauft oder aus anderen Gründen an Dritte weitergegeben.
+    </p>
+    <p>
+      Die nachfolgende Erklärung gibt Ihnen einen Überblick darüber, wie wir diesen Schutz gewährleisten und welche Art von Daten zu welchem Zweck erhoben werden.
+    </p>
+    <h3>Datenverarbeitung auf dieser Internetseite</h3>
+    <p>
+      Alan Gawlik erhebt und speichert automatisch in ihren Server-Log-Files Informationen, die Ihr Browser an uns übermittelt. Dies sind:
+    </p>
+    <ul>
+      <li>Browsertyp/ -version</li>
+      <li>verwendetes Betriebssystem</li>
+      <li>Referrer URL (die zuvor besuchte Seite)</li>
+      <li>Hostname des zugreifenden Rechners (IP Adresse)</li>
+      <li>Uhrzeit der Serveranfrage</li>
+    </ul>
+    <p>
+      Diese Daten sind für Alan Gawlik nicht bestimmten Personen zuordenbar. Eine Zusammenführung dieser Daten mit anderen Datenquellen wird nicht vorgenommen, die Daten werden zudem nach einer statistischen Auswertung gelöscht.
+    </p>
+
+    <h2>Impressum</h2>
+    <p>
+      Angaben gemäß § 5 TMG:
+    </p>
+    <p>
+      Alan Gawlik<br>
+      Regattastr 66<br>
+      12527 Berlin<br>
+      Deutschland
+    </p>
+    <h3>Kontakt:</h3>
+    <p>
+      Telefon: +4915734066000<br>
+      E-Mail: info@alangawlik.de
+    </p>
+    <h3>Verantwortlich für den Inhalt nach § 55 Abs. 2 RStV:</h3>
+    <p>
+      Alan Gawlik<br>
+      Regattastr 66<br>
+      12527 Berlin<br>
+      Deutschland
+    </p>
+    <h3>Haftungsausschluss:</h3>
+    <p>
+      Haftung für Inhalte<br>
+      Die Inhalte unserer Seiten wurden mit größter Sorgfalt erstellt. Für die Richtigkeit, Vollständigkeit und Aktualität der Inhalte können wir jedoch keine Gewähr übernehmen.
+    </p>
+    <p>
+      Haftung für Links<br>
+      Unser Angebot enthält Links zu externen Webseiten Dritter, auf deren Inhalte wir keinen Einfluss haben. Deshalb können wir für diese fremden Inhalte auch keine Gewähr übernehmen. Für die Inhalte der verlinkten Seiten ist stets der jeweilige Anbieter oder Betreiber der Seiten verantwortlich.
+    </p>
+  </div>
+</BaseLayout>
+
+<style>
+  .legal {
+    max-width: 640px;
+    padding: 72px 64px 72px 24px;
+    box-sizing: content-box;
+    font-family: var(--font-body);
+    font-size: 16px;
+    line-height: 1.7;
+    color: var(--text2);
+  }
+  h1 {
+    margin: 0 0 32px;
+    font-family: var(--font-display);
+    font-weight: 700;
+    font-size: 48px;
+    line-height: 1.1;
+    color: var(--ink);
+  }
+  h2,
+  h3 {
+    font-family: var(--font-display);
+    font-weight: 700;
+    line-height: 1.15;
+    color: var(--ink);
+  }
+  h2 {
+    margin: 2em 0 0.5em;
+    font-size: 34px;
+  }
+  h3 {
+    margin: 1.6em 0 0.4em;
+    font-size: 26px;
+  }
+  p,
+  ul {
+    margin: 0 0 1em;
+  }
+  ul {
+    padding-left: 1.4em;
+  }
+</style>

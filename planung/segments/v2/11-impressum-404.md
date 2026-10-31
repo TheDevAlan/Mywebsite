@@ -1,5 +1,5 @@
 # Segment 11: Impressum und 404 im neuen Stil
-Status: offen · Hängt ab von: 05
+Status: erledigt · Hängt ab von: 05
 Aus: planung/changes/01-umbau-design-relaunch.md
 
 ## Kontext
@@ -33,4 +33,4 @@ Aus „Was NICHT kaputtgehen darf“ (Änderung 01). Noch nicht neu gebaute Seit
 Nach bestandenem Test: git add + commit mit sprechender Nachricht (Build-Ausgabe `docs/` mitcommitten),
 Status in dieser Datei und in planung/PLAN.md auf "erledigt" setzen,
 kurz in Klartext erklären, was gebaut wurde und wie man es ausführt.
-Grounding-Befunde: _(trägt /dev-build ein)_
+Grounding-Befunde: 4 (tote Blog-Zeilen schon in Segment 09 entfernt; Footer-Link /en/impressum führte vorher ins Leere; 404-Sprachumschalter zeigt auf /en/404/; Inhalt nach E-08 in src/views). Meldung an Alan, nicht geändert: Rechtstext nennt § 5 TMG und § 55 Abs. 2 RStV (inzwischen DDG bzw. MStV); Datenschutztext erwähnt GitHub Pages nicht.
