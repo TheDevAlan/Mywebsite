@@ -1,19 +1,30 @@
 ---
 import BaseHead from "../components/BaseHead.astro";
-import Header from "../components/Header.astro";
-import Footer from "../components/Footer.astro";
-import SideBar from "../components/SideBar.astro";
-import { ViewTransitions } from "astro:transitions";
+import Sidebar from "../components/Sidebar.astro";
 
-import { SITE_TITLE, SITE_DESCRIPTION, TRANSITION_API } from "../config";
+import { SITE_TITLE, SITE_DESCRIPTION } from "../config";
+
+export interface Props {
+  title?: string;
+  description?: string;
+  image?: string;
+  ogType?: string;
+  /** Aktiver Navigationspunkt; Startseite und Rechtliches: keiner */
+  active?: "about" | "works" | "thoughts" | "contact";
+  /** Sidebar bleibt beim Scrollen stehen (works) */
+  stickySidebar?: boolean;
+  /** Hauptspalte füllt mindestens die Viewporthöhe (Start, contact) */
+  fullHeight?: boolean;
+}
 
 const {
   image,
   title = SITE_TITLE,
   description = SITE_DESCRIPTION,
-  includeSidebar = true,
-  sideBarActiveItemID,
   ogType,
+  active,
+  stickySidebar = false,
+  fullHeight = false,
 } = Astro.props;
 ---
 
@@ -21,19 +32,30 @@ const {
 <html lang="en">
   <head>
     <BaseHead title={title} description={description} image={image} ogType={ogType} />
-    {TRANSITION_API && <ViewTransitions />}
     <link rel="icon" type="image/svg+xml" href="/favicon.ico" />
   </head>
-  <body class="flex justify-center items-center min-h-screen">
-    <div class="bg-base-100 w-full flex flex-col items-center">
-      <Header title={SITE_TITLE} />
-      {includeSidebar && <SideBar sideBarActiveItemID={sideBarActiveItemID} class="horizontal-menu" />}
-      <div class="content-container w-full max-w-[900px] p-6 pt-10">
-        <main>
-          <slot />
-        </main>
-        <Footer />
-      </div>
+  <body>
+    <div class="layout">
+      <Sidebar active={active} sticky={stickySidebar} />
+      <main class:list={["main", { full: fullHeight }]}>
+        <slot />
+      </main>
     </div>
   </body>
 </html>
+
+<style>
+  .layout {
+    display: grid;
+    grid-template-columns: 280px minmax(0, 1fr);
+    min-height: 100vh;
+  }
+  .main {
+    min-width: 0;
+    padding: 72px 64px 72px 24px;
+    max-width: 900px;
+  }
+  .main.full {
+    min-height: 100vh;
+  }
+</style>

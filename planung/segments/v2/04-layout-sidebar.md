@@ -1,5 +1,5 @@
 # Segment 04: Gemeinsames Layout mit Sidebar und Theme-Schalter
-Status: offen · Hängt ab von: 03
+Status: erledigt · Hängt ab von: 03
 Aus: planung/changes/01-umbau-design-relaunch.md
 
 ## Kontext
@@ -42,4 +42,5 @@ Aus „Was NICHT kaputtgehen darf“ (Änderung 01). Noch nicht neu gebaute Seit
 Nach bestandenem Test: git add + commit mit sprechender Nachricht (Build-Ausgabe `docs/` mitcommitten),
 Status in dieser Datei und in planung/PLAN.md auf "erledigt" setzen,
 kurz in Klartext erklären, was gebaut wurde und wie man es ausführt.
-Grounding-Befunde: _(trägt /dev-build ein)_
+Grounding-Befunde: 3 (Namenskollision SideBar/Sidebar unter Windows-Git; Header.astro auskommentiert und SideBarFooter ungenutzt; alter Footer trug die Kontakt-Icons, kommen mit Segment 10 zurück)
+Hinweis: Layout-Eigenschaften `active`, `stickySidebar`, `fullHeight`; Sidebar-Eigenschaften `active`, `sticky`. Auf alten Seiten ist kein Menüpunkt aktiv.

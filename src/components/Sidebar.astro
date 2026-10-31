@@ -1,0 +1,195 @@
+---
+// Linke Spalte: Logo, Navigation, Sprach- und Theme-Umschalter, Footer.
+// Maße und Schriften: planung/design-handoff/README.md, Abschnitt "Globales Layout".
+export interface Props {
+  active?: 'about' | 'works' | 'thoughts' | 'contact';
+  sticky?: boolean;
+}
+
+const { active, sticky = false } = Astro.props;
+const year = new Date().getFullYear();
+
+const nav = [
+  { id: 'about', href: '/about' },
+  { id: 'works', href: '/works' },
+  { id: 'thoughts', href: '/thoughts' },
+  { id: 'contact', href: '/contact' },
+] as const;
+---
+
+<aside class:list={['sidebar', { sticky }]}>
+  <a class="logo" href="/" aria-label="alan. – Startseite">alan<span class="dot">.</span></a>
+
+  <nav class="nav" aria-label="Hauptnavigation">
+    {
+      nav.map((item) => (
+        <a
+          href={item.href}
+          class:list={[{ current: active === item.id }]}
+          aria-current={active === item.id ? 'page' : undefined}
+        >
+          {item.id}
+        </a>
+      ))
+    }
+  </nav>
+
+  <div class="switch lang" aria-label="Sprache">
+    <span class="on">DE</span>
+    <span class="slash">/</span>
+    <span class="off">EN</span>
+  </div>
+
+  <div class="switch theme">
+    <button type="button" class="theme-btn sun" data-set-theme="light" aria-label="hell">
+      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+        ><circle cx="12" cy="12" r="4.2"></circle><path d="M12 2.5v2.3M12 19.2v2.3M2.5 12h2.3M19.2 12h2.3M5.3 5.3l1.6 1.6M17.1 17.1l1.6 1.6M5.3 18.7l1.6-1.6M17.1 6.9l1.6-1.6"
+        ></path></svg
+      >
+    </button>
+    <span class="slash">/</span>
+    <button type="button" class="theme-btn moon" data-set-theme="dark" aria-label="dunkel">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"
+        ><path d="M19.5 14.8A8 8 0 0 1 9.2 4.5 8 8 0 1 0 19.5 14.8Z"></path></svg
+      >
+    </button>
+  </div>
+
+  <footer class="foot">
+    <span>&copy; {year} Alan Gawlik</span>
+    <a href="/impressum">Datenschutz &amp; Impressum</a>
+  </footer>
+</aside>
+
+<script>
+  document.querySelectorAll<HTMLButtonElement>('[data-set-theme]').forEach((btn) => {
+    btn.addEventListener('click', () => {
+      const theme = btn.dataset.setTheme;
+      if (theme === 'light' || theme === 'dark') (window as any).setTheme?.(theme);
+    });
+  });
+</script>
+
+<style>
+  .sidebar {
+    display: flex;
+    flex-direction: column;
+    padding: 64px 0 40px 72px;
+    font-family: var(--font-display);
+    min-height: 100vh;
+    box-sizing: border-box;
+  }
+  .sidebar.sticky {
+    position: sticky;
+    top: 0;
+    align-self: start;
+  }
+
+  .logo {
+    font-weight: 700;
+    font-size: 52px;
+    line-height: 1;
+    color: var(--ink);
+    text-decoration: none;
+    transition: color 0.2s;
+  }
+  .logo .dot {
+    color: var(--coral);
+    transition: color 0.2s;
+  }
+  .logo:hover {
+    color: var(--coral);
+  }
+  .logo:hover .dot {
+    color: var(--ink);
+  }
+
+  .nav {
+    margin-top: 72px;
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+    font-size: 30px;
+    font-weight: 400;
+  }
+  .nav a {
+    color: var(--ink);
+    text-decoration: none;
+    width: fit-content;
+    transition: color 0.2s;
+  }
+  .nav a:hover {
+    color: var(--coral);
+  }
+  .nav a.current {
+    text-decoration: underline wavy var(--coral);
+    text-underline-offset: 6px;
+  }
+
+  .switch {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+  .lang {
+    margin-top: 44px;
+    font-size: 22px;
+  }
+  .lang .on {
+    font-weight: 700;
+    color: var(--ink);
+  }
+  .lang .off {
+    color: var(--muted);
+  }
+  .slash {
+    color: var(--muted2);
+  }
+  .theme {
+    margin-top: 14px;
+    font-size: 22px;
+  }
+
+  .theme-btn {
+    background: none;
+    border: none;
+    padding: 2px;
+    display: inline-flex;
+    color: var(--muted);
+    transition: transform 0.2s, color 0.2s;
+  }
+  .theme-btn:focus-visible {
+    outline: 2px solid var(--coral);
+    outline-offset: 2px;
+    border-radius: 4px;
+  }
+  .sun:hover {
+    transform: rotate(20deg);
+  }
+  .moon:hover {
+    transform: rotate(-15deg);
+  }
+  /* Aktives Icon = aktuelles Theme (rein per CSS, kein Skript-Zustand) */
+  :global([data-theme='light']) .sun,
+  :global([data-theme='dark']) .moon {
+    color: var(--ink);
+  }
+
+  .foot {
+    margin-top: auto;
+    padding-top: 40px;
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    font-family: var(--font-body);
+    font-size: 12px;
+    color: var(--muted);
+  }
+  .foot a {
+    color: var(--muted);
+    text-decoration: none;
+  }
+  .foot a:hover {
+    color: var(--coral);
+  }
+</style>

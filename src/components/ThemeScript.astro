@@ -25,9 +25,5 @@
       } catch (e) {}
     };
     apply(stored() || system());
-    // Astro ViewTransitions tauscht <html>-Attribute beim Seitenwechsel aus
-    document.addEventListener('astro:after-swap', function () {
-      apply(stored() || system());
-    });
   })();
 </script>
