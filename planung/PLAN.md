@@ -19,7 +19,7 @@ Alle Workflow-Pfade `docs/…` gelten hier als `planung/…`.
 
 ### v2 — Änderung 01: Design-Relaunch „lockeres Skizzenbuch“
 - [x] 01 — Auslieferung absichern (CNAME & .nojekyll) → `planung/segments/v2/01-auslieferung-absichern.md`
-- [ ] 02 — Altlasten entfernen (Lebenslauf, Services, Store, RSS) → `planung/segments/v2/02-altlasten-entfernen.md`
+- [x] 02 — Altlasten entfernen (Lebenslauf, Services, Store, RSS) → `planung/segments/v2/02-altlasten-entfernen.md`
 - [ ] 03 — Design-Fundament, daisyUI raus → `planung/segments/v2/03-design-fundament.md`
 - [ ] 04 — Layout mit Sidebar und Theme-Schalter → `planung/segments/v2/04-layout-sidebar.md`
 - [ ] 05 — Zweisprachigkeit (DE/EN) → `planung/segments/v2/05-zweisprachigkeit.md`
