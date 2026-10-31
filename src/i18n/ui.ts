@@ -30,6 +30,13 @@ const de = {
   'thoughts.doodleA': 'du, nachdenklich, Gedankenblase über dem Kopf',
   'thoughts.doodleB': 'Glühbirne geht an',
   'thoughts.empty': 'Hier ist noch nichts. Gedanken kommen bald.',
+  'contact.doodleA': 'zwei Tassen Kaffee',
+  'contact.doodleB': 'Tassen stoßen an',
+  'contact.title': 'sag hallo.',
+  'contact.text': 'Eine Mail ist der schnellste Weg zu mir. Oder du findest mich hier im Internet.',
+  'contact.github': 'github',
+  'contact.linkedin': 'linkedin',
+  'contact.coffee': 'buy me a coffee',
 } as const;
 
 export type UiKey = keyof typeof de;
