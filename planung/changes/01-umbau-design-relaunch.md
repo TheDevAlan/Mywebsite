@@ -102,7 +102,7 @@ Keine Datenbank, keine Nutzerdaten. Inhalte, die umziehen:
 ## Bezug zu bestehenden Entscheidungen
 Es gab bisher keine `decisions.md`; sie wird mit dieser Änderung angelegt (`planung/decisions.md`). Einzige historische Spur:
 CNAME wurde per Commit entfernt und wieder angelegt (`e7ee787`, `ce4700f`) — wird bewusst abgesichert, nicht „aufgeräumt“.
-Das Impressum enthält Anschrift und Telefonnummer; sie bleiben unverändert.
+Das Impressum enthält die Anschrift; sie bleibt unverändert. Die Telefonnummer wurde auf Wunsch von Alan nach Segment 11 entfernt.
 
 ## Rollback
 Zweig `change/01-design-relaunch`. Der Zweig `main` (= die live veröffentlichte Seite) bleibt unangetastet, bis du bewusst zusammenführst.
