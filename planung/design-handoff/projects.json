@@ -1,0 +1,138 @@
+[
+  {
+    "category": "Projekte",
+    "title": "KI-Schulung – kompakt, praxisnah, verständlich.",
+    "description": "Diese KI-Schulung biete ich an, um einen fundierten und praxisnahen Einstieg in die Welt der Künstlichen Intelligenz zu ermöglichen. In fünf Modulen lernst du, wie KI funktioniert, worauf du achten solltest und wie du sie im Arbeitsalltag sinnvoll einsetzt.",
+    "href": "https://www.gsub.de/gsub-akademie/seminare/ki-schulung",
+    "isNew": true,
+    "wip": false
+  },
+  {
+    "category": "Projekte",
+    "title": "KI im sozialen Bereich sinnvoll einsetzen",
+    "description": "Bei den AI Impact Days in Berlin haben wir unsere KI-Lösung vorgestellt: Ein Chatbot, der Förderanträge vorbefüllt und vorprüft, um bürokratische Hürden zu senken und Prozesse zu vereinfachen. Die intensive Diskussion mit Fachleuten und Teilnehmenden hat gezeigt: Der Bedarf ist da!",
+    "href": "https://www.linkedin.com/posts/gesellschaft-f%C3%BCr-soziale-unternehmensberatung_aiimpactdays-sozialeinnovation-faemrdermittel-activity-7316420568562462720-wJcQ/",
+    "isNew": true,
+    "wip": false
+  },
+  {
+    "category": "KI-Assistenz",
+    "title": "EasyAmt - Macht Bürokratie einfach.",
+    "description": "Ich helfe dir dabei, offizielle Schreiben verständlich zu machen. Einfach Dokument hochladen – ich erkläre dir den Inhalt in einfacher Sprache, übersetze bei Bedarf in deine Sprache und gebe dir Tipps, wie du Formulare richtig ausfüllst. Schnell, kostenlos und verständlich – für alle, die sich mit Behörden schwer tun.",
+    "href": "https://chatgpt.com/g/g-7XwzSJ0E5-easyamt",
+    "isNew": false,
+    "wip": false
+  },
+  {
+    "category": "KI-Assistenz",
+    "title": "The Assistant",
+    "description": "Dieser ChatBot optimiert deine Arbeitsabläufe und beschleunigt den Alltag. Mit spezialisierten Hotkeys und einer präzisen Arbeitsweise liefert er blitzschnelle und treffende Antworten.",
+    "href": "https://chatgpt.com/g/g-s5BkH9UiP-the-assistant",
+    "isNew": false,
+    "wip": false
+  },
+  {
+    "category": "KI-Assistenz",
+    "title": "PolitikRadar",
+    "description": "Ich helfe dir, rhetorische Tricks in Texten zu erkennen und verständlich zu erklären. Poste einfach einen Link – ich analysiere den Inhalt, identifiziere Manipulationstechniken und fördere dein kritisches Denken!",
+    "href": "https://chatgpt.com/g/g-oSWt8Pc3h-politikradar",
+    "isNew": false,
+    "wip": false
+  },
+  {
+    "category": "KI-Assistenz",
+    "title": "Seoul Travel Guide",
+    "description": "Mache ein Foto und ich erzähle dir die Geschichte dahinter – von kulturellen Traditionen bis zu historischen Hintergründen. Ich bin dein smarter Reisebegleiter für Seoul und Südkorea",
+    "href": "https://chatgpt.com/g/g-674db92f66d881919296486a8ee94760-seoul-guide",
+    "isNew": false,
+    "wip": false
+  },
+  {
+    "category": "KI-Assistenz",
+    "title": "Diktiergerät & Sprachmemos",
+    "description": "Diese KI hilft dir, Ideen fließend zu erfassen und automatisch in thematische Abschnitte zu gliedern. So behältst du den Überblick und strukturierst deine Gedanken effizient.",
+    "href": "https://chatgpt.com/g/g-4wxJIVoDc-diktiergerat-sprachmemos",
+    "isNew": false,
+    "wip": false
+  },
+  {
+    "category": "KI-Assistenz",
+    "title": "Sturmlicht Chroniken Guide",
+    "description": "Ich helfe dir, die Welt von Roschar zu erkunden – mit Erklärungen zu Handlung, Charakteren und Themen. Ob detaillierte Analysen oder spoilerfreie Zusammenfassungen – frag mich alles über Sandersons Meisterwerk!",
+    "href": "https://chatgpt.com/g/g-SLtD9goV2-the-stormlight-archive",
+    "isNew": false,
+    "wip": false
+  },
+  {
+    "category": "KI-Assistenz",
+    "title": "The Middle Way",
+    "description": "Ich begleite dich mit Einsichten zu Meditation, Buddhismus und Achtsamkeit. In einer klaren und ruhigen Sprache öffne ich einen Raum für Reflexion und persönliches Wachstum.",
+    "href": "https://chatgpt.com/g/g-pdS2R5i2w-middle-way",
+    "isNew": false,
+    "wip": false
+  },
+  {
+    "category": "KI-Assistenz",
+    "title": "Einkaufsplaner ALPHA",
+    "description": "Diese KI erstellt deine Wochenmahlzeiten basierend auf aktuellen Angeboten und spart dir Zeit sowie Geld. Die passende Einkaufsliste gibt's direkt dazu!",
+    "href": "https://chatgpt.com/g/g-eH0HA2Hjd-einkaufsplaner-pro",
+    "isNew": false,
+    "wip": true
+  },
+  {
+    "category": "KI-Assistenz",
+    "title": "Begginer-friendly coding assistant",
+    "description": "Dieser ChatBot hilft dir bei der Planung und Entwicklung deines Codes, ohne dich mit fertigen Lösungen zu überhäufen. Ideal für Anfänger, um echtes Verständnis aufzubauen!",
+    "href": "https://chatgpt.com/g/g-alsH75AyZ-beginner-friendly-coding-assistant",
+    "isNew": false,
+    "wip": false
+  },
+  {
+    "category": "KI-Assistenz für das Fördermittelmanagement",
+    "title": "Ihre Assistenz im Fördermittelmanagement",
+    "description": "FörderFee hilft dir, dich im Berliner Fördermittelmanagement zurechtzufinden – mit Fokus auf LHO und TV-L. Ich beantworte deine Fragen präzise und regelkonform, damit deine Anträge und Eingruppierungen rechtssicher sind!",
+    "href": "https://chatgpt.com/g/g-7kng5aPM4-forderfee",
+    "isNew": false,
+    "wip": false
+  },
+  {
+    "category": "KI-Assistenz für das Fördermittelmanagement",
+    "title": "PK Eingruppierung",
+    "description": "Ich unterstütze dich bei der Prüfung und Eingruppierung von Personalstellen – stets basierend auf TV-L oder TVöD. Verlass dich auf eine präzise und regelkonforme Bewertung im Fördermittelmanagement!",
+    "href": "https://chatgpt.com/g/g-679ce1e2f8e0819198ed613cbdf05d23-pk-eingruppierung",
+    "isNew": true,
+    "wip": false
+  },
+  {
+    "category": "KI-Assistenz für das Fördermittelmanagement",
+    "title": "Prüffeststellung",
+    "description": "Diese KI optimiert deine Prüffeststellungen in Rechtschreibung, Grammatik und Stil. Ich sorge für eine klare, präzise und professionelle Ausdrucksweise!",
+    "href": "https://chatgpt.com/g/g-hUuBHw33m-edit-pruffeststellung",
+    "isNew": false,
+    "wip": false
+  },
+  {
+    "category": "KI-Assistenz für das Fördermittelmanagement",
+    "title": "Redigieren",
+    "description": "Dieser ChatBot überprüft Rechtschreibung, Grammatik und Stil, um deine Texte verständlicher und hochwertiger zu machen. Perfektioniere deine Worte mit präziser Korrektur und stilistischer Feinabstimmung!",
+    "href": "https://chatgpt.com/g/g-IFMSzWUk7-redigieren",
+    "isNew": false,
+    "wip": false
+  },
+  {
+    "category": "Maßgeschneiderte Code-Lösungen",
+    "title": "PDF-Scanner",
+    "description": "Spare wertvolle Zeit mit meinem OCR-gestützten Tool zur automatischen Erkennung und Umbenennung von Prüfvermerken und Schlussbescheiden. Kann einfach auf andere Dokumente angepasst werden.",
+    "href": "https://github.com/TheDevAlan/PDF-Scanner",
+    "isNew": true,
+    "wip": false
+  },
+  {
+    "category": "Maßgeschneiderte Code-Lösungen",
+    "title": "BAPP_Datenbasis",
+    "description": "Der Code automatisiert die Extraktion von TLN-Daten aus den Eureka-TRS-Dokumenten, indem er die relevanten Informationen aus den PDFs in Textdateien umwandelt und diese strukturiert in eine Excel-Datei (Prüfvermerk) einträgt",
+    "href": "https://github.com/TheDevAlan/BAPP_Datenbasis",
+    "isNew": false,
+    "wip": false
+  }
+]
