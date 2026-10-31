@@ -1,0 +1,1 @@
+import"./hoisted.BfpFox0p.js";document.querySelectorAll("[data-doodle]").forEach(e=>{let a=!1;e.addEventListener("click",()=>{a=!a;const t=e.querySelector(".label"),l=e.querySelector("img");t&&(t.textContent=a?e.dataset.labelB:e.dataset.labelA);const s=a?e.dataset.imgB:e.dataset.imgA;l&&s&&(l.src=s),e.dataset.state=a?"b":"a"})});

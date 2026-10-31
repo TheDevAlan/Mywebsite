@@ -18,6 +18,8 @@ export interface Props {
   stickySidebar?: boolean;
   /** Hauptspalte füllt mindestens die Viewporthöhe (Start, contact) */
   fullHeight?: boolean;
+  /** Kein Standard-Padding und keine max-width: die Seite gestaltet ihre Hauptspalte selbst */
+  bare?: boolean;
 }
 
 const {
@@ -29,6 +31,7 @@ const {
   active,
   stickySidebar = false,
   fullHeight = false,
+  bare = false,
 } = Astro.props;
 ---
 
@@ -41,7 +44,7 @@ const {
   <body>
     <div class="layout">
       <Sidebar active={active} sticky={stickySidebar} lang={lang} />
-      <main class:list={["main", { full: fullHeight }]}>
+      <main class:list={["main", { full: fullHeight, bare }]}>
         <slot />
       </main>
     </div>
@@ -61,5 +64,9 @@ const {
   }
   .main.full {
     min-height: 100vh;
+  }
+  .main.bare {
+    padding: 0;
+    max-width: none;
   }
 </style>

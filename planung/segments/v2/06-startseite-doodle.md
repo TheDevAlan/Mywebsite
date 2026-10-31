@@ -1,5 +1,5 @@
 # Segment 06: Doodle-Komponente und neue Startseite
-Status: offen · Hängt ab von: 05
+Status: erledigt · Hängt ab von: 05
 Aus: planung/changes/01-umbau-design-relaunch.md
 
 ## Kontext
@@ -37,4 +37,5 @@ Aus „Was NICHT kaputtgehen darf“ (Änderung 01). Noch nicht neu gebaute Seit
 Nach bestandenem Test: git add + commit mit sprechender Nachricht (Build-Ausgabe `docs/` mitcommitten),
 Status in dieser Datei und in planung/PLAN.md auf "erledigt" setzen,
 kurz in Klartext erklären, was gebaut wurde und wie man es ausführt.
-Grounding-Befunde: _(trägt /dev-build ein)_
+Grounding-Befunde: 3 (Startseiten-Inhalt liegt seit Segment 05 in src/views/HomeView.astro, nicht index.astro; BaseLayout-Hauptspalte hatte festes Padding und max-width, daher Eigenschaft `bare`; Sidebar wich durch geerbten Zeilenabstand 1.5 vom Prototyp ab, korrigiert mit `line-height: normal`)
+Hinweis: Doodle-Komponente nimmt Bilder aus public/doodles/{name}-a|b.svg|png automatisch an. Prototyp-Platzhalter trägt zusätzlich „doodle A: …“ und „(klick mich)“; bewusst nur Handoff-Text übernommen. Dunkelmodus-Behandlung echter Bilder kommt mit den Zeichnungen.

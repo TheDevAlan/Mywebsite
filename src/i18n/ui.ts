@@ -11,6 +11,9 @@ const de = {
   'sidebar.navLabel': 'Hauptnavigation',
   'sidebar.langLabel': 'Sprache',
   'footer.legal': 'Datenschutz & Impressum',
+  'home.doodleA': 'du am Schreibtisch, tief im Code',
+  'home.doodleB': 'du schaust hoch und winkst',
+  'home.claim': 'I build apps - for work, for life, for fun.',
 } as const;
 
 export type UiKey = keyof typeof de;
@@ -20,6 +23,7 @@ const en: Partial<Record<UiKey, string>> = {
   'sidebar.home': 'alan. – home',
   'sidebar.navLabel': 'Main navigation',
   'sidebar.langLabel': 'Language',
+  'home.claim': 'I build apps - for work, for life, for fun.',
 };
 
 export const ui: Record<Lang, Partial<Record<UiKey, string>>> = { de, en };

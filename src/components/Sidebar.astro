@@ -101,6 +101,7 @@ const langLinks = (Object.keys(languages) as Lang[]).map((code) => ({
     flex-direction: column;
     padding: 64px 0 40px 72px;
     font-family: var(--font-display);
+    line-height: normal; /* wie im Prototyp, nicht der geerbte Tailwind-Wert 1.5 */
     min-height: 100vh;
     box-sizing: border-box;
   }
