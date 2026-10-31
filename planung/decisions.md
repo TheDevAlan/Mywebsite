@@ -45,3 +45,9 @@ Format: Kontext · Alternativen · Begründung · Konsequenz.
 **Alternativen:** Astro-`i18n`-Konfiguration samt `fallback`/`getRelativeLocaleUrl`; eigene Hilfen.
 **Begründung:** Astros statischer Fallback kann auf die deutsche Seite weiterleiten statt eine englische URL zu liefern. Eigene Hilfen (`src/i18n/ui.ts`, `src/i18n/utils.ts`) leiten nie um, der Rückfall läuft über das Wörterbuch.
 **Konsequenz:** Jede Seite = Komponente in `src/views/` mit `lang`-Prop plus zwei dünne Routen-Dateien (`src/pages/…`, `src/pages/en/…`); Layout und Sidebar bekommen `lang`. Neue Texte stehen in `ui.ts`; fehlt der englische Eintrag, erscheint Deutsch (`footer.legal` ist dafür bewusst ungesetzt).
+
+## E-09 — Posts als Markdown in `src/posts/<sprache>/`, ohne Content-Collection (2026-10-31)
+**Kontext:** Segment 09 braucht eine Sprachablage für Posts; die Astro-Collection `blog` war nach dem Löschen der Demo-Posts leer.
+**Alternativen:** Collection mit Unterordnern `de/` und `en/` · Posts per `import.meta.glob` aus `src/posts/`.
+**Begründung:** Eine leere Collection erzeugt bei jedem Build vier Warnungen („collection blog does not exist or is empty“), solange kein Post existiert.
+**Konsequenz:** Posts liegen in `src/posts/de/<name>.md` und `src/posts/en/<name>.md` (Pflichtfelder `title`, `description`, `pubDate`; fehlende Felder brechen den Build). Slug = Dateiname; eine englische Fassung gehört zur deutschen, wenn die Datei gleich heißt. `/en/thoughts` zeigt englische Posts, sonst die deutsche Fassung. `src/content/` existiert nicht mehr.

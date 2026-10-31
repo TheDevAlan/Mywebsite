@@ -1,0 +1,13 @@
+---
+// Dünne Routen-Datei (Deutsch). Inhalt: src/views/PostView.astro, Posts: src/lib/posts.ts
+import PostView from "../../views/PostView.astro";
+import { getPosts } from "../../lib/posts";
+
+export function getStaticPaths() {
+  return getPosts("de").map((post) => ({ params: { slug: post.slug }, props: { post } }));
+}
+
+const { post } = Astro.props;
+---
+
+<PostView lang="de" post={post} />

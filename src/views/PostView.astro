@@ -1,0 +1,103 @@
+---
+// Seite "thoughts", Detail (schlicht). Routen: src/pages/thoughts/[slug].astro (de), src/pages/en/thoughts/[slug].astro (en)
+import BaseLayout from "../layouts/BaseLayout.astro";
+import type { Lang } from "../i18n/ui";
+import { formatMonth, type Post } from "../lib/posts";
+
+export interface Props {
+  lang?: Lang;
+  post: Post;
+}
+const { lang = "de", post } = Astro.props;
+const { title, description, pubDate, Content } = post;
+---
+
+<BaseLayout lang={lang} active="thoughts" title={title} description={description} ogType="article" bare>
+  <article class="post">
+    <h1>{title}</h1>
+    <time class="date" datetime={pubDate.toISOString()}>{formatMonth(pubDate, lang)}</time>
+    <div class="content">
+      <Content />
+    </div>
+  </article>
+</BaseLayout>
+
+<style>
+  .post {
+    max-width: 640px;
+    padding: 72px 64px 72px 24px;
+    box-sizing: content-box;
+  }
+  h1 {
+    margin: 0;
+    font-family: var(--font-display);
+    font-weight: 700;
+    font-size: 48px;
+    line-height: 1.1;
+  }
+  .date {
+    display: block;
+    margin-top: 8px;
+    font-family: var(--font-display);
+    font-size: 20px;
+    color: var(--coral-d);
+  }
+  .content {
+    margin-top: 32px;
+    font-family: var(--font-body);
+    font-size: 17px;
+    line-height: 1.7;
+    color: var(--text2);
+  }
+  .content :global(p),
+  .content :global(ul),
+  .content :global(ol),
+  .content :global(pre),
+  .content :global(blockquote) {
+    margin: 0 0 1.2em;
+  }
+  .content :global(h2),
+  .content :global(h3) {
+    font-family: var(--font-display);
+    font-weight: 700;
+    color: var(--ink);
+    line-height: 1.15;
+    margin: 1.6em 0 0.5em;
+  }
+  .content :global(h2) {
+    font-size: 32px;
+  }
+  .content :global(h3) {
+    font-size: 26px;
+  }
+  .content :global(ul),
+  .content :global(ol) {
+    padding-left: 1.4em;
+  }
+  .content :global(a) {
+    color: var(--ink);
+    text-decoration: underline var(--coral);
+    text-underline-offset: 3px;
+  }
+  .content :global(a:hover) {
+    color: var(--coral);
+  }
+  .content :global(img) {
+    max-width: 100%;
+    height: auto;
+  }
+  .content :global(code) {
+    font-size: 0.9em;
+  }
+  .content :global(pre) {
+    overflow-x: auto;
+    padding: 14px 16px;
+    background: var(--stripe);
+    border-radius: 4px;
+  }
+  .content :global(blockquote) {
+    padding-left: 16px;
+    border-left: 3px solid var(--coral);
+    color: var(--muted);
+  }
+</style>

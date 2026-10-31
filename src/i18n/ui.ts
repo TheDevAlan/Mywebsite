@@ -25,6 +25,11 @@ const de = {
   'works.title': 'works',
   'works.new': 'neu!',
   'works.wip': 'in arbeit',
+  'thoughts.title': 'thoughts',
+  'thoughts.sub': 'Kleine Texte über verschiedene Sachen.',
+  'thoughts.doodleA': 'du, nachdenklich, Gedankenblase über dem Kopf',
+  'thoughts.doodleB': 'Glühbirne geht an',
+  'thoughts.empty': 'Hier ist noch nichts. Gedanken kommen bald.',
 } as const;
 
 export type UiKey = keyof typeof de;

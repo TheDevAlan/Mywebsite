@@ -1,0 +1,141 @@
+---
+// Seite "thoughts" (6d), Liste. Routen: src/pages/thoughts/index.astro (de), src/pages/en/thoughts/index.astro (en)
+import BaseLayout from "../layouts/BaseLayout.astro";
+import Doodle from "../components/Doodle.astro";
+import { useTranslations, type Lang } from "../i18n/ui";
+import { localePath } from "../i18n/utils";
+import { getPosts, formatMonth } from "../lib/posts";
+
+export interface Props {
+  lang?: Lang;
+}
+const { lang = "de" } = Astro.props;
+const t = useTranslations(lang);
+const posts = getPosts(lang);
+---
+
+<BaseLayout lang={lang} active="thoughts" bare>
+  <div class="thoughts">
+    <header>
+      <div class="head">
+        <h1>{t("thoughts.title")}<span class="dot">.</span></h1>
+        <p class="sub">{t("thoughts.sub")}</p>
+      </div>
+      <Doodle
+        name="thoughts"
+        labelA={t("thoughts.doodleA")}
+        labelB={t("thoughts.doodleB")}
+        width={240}
+        height={190}
+        rotate={-3}
+        hoverRotate={2}
+        hoverScale={1.03}
+      />
+    </header>
+
+    {
+      posts.length === 0 ? (
+        <p class="empty">{t("thoughts.empty")}</p>
+      ) : (
+        <ul>
+          {posts.map((post) => (
+            <li>
+              <a href={localePath(`/thoughts/${post.slug}`, lang)}>
+                <time class="date" datetime={post.pubDate.toISOString()}>
+                  {formatMonth(post.pubDate, lang)}
+                </time>
+                <span class="body">
+                  <span class="title">{post.title}</span>
+                  <span class="teaser">{post.description}</span>
+                </span>
+              </a>
+            </li>
+          ))}
+        </ul>
+      )
+    }
+  </div>
+</BaseLayout>
+
+<style>
+  .thoughts {
+    display: flex;
+    flex-direction: column;
+    gap: 40px;
+    padding: 72px 72px 72px 24px;
+  }
+  header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    gap: 32px;
+  }
+  .head {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+  h1 {
+    margin: 0;
+    font-family: var(--font-display);
+    font-weight: 700;
+    font-size: 64px;
+    line-height: 1;
+  }
+  .dot {
+    color: var(--coral);
+  }
+  .sub {
+    margin: 0;
+    max-width: 360px;
+    font-family: var(--font-body);
+    font-size: 16px;
+    color: var(--text2);
+  }
+  .empty {
+    margin: 0;
+    font-family: var(--font-display);
+    font-size: 26px;
+    color: var(--muted);
+  }
+  ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+  }
+  li a {
+    display: grid;
+    grid-template-columns: 110px 1fr;
+    gap: 20px;
+    padding: 22px 0;
+    border-top: 1.5px dashed var(--line);
+    color: var(--ink);
+    text-decoration: none;
+    transition: transform 0.2s;
+  }
+  li a:hover {
+    transform: translateX(8px);
+  }
+  .date {
+    padding-top: 4px;
+    font-family: var(--font-display);
+    font-size: 20px;
+    color: var(--coral-d);
+  }
+  .body {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+  }
+  .title {
+    font-family: var(--font-display);
+    font-weight: 700;
+    font-size: 28px;
+    line-height: 1.1;
+  }
+  .teaser {
+    font-family: var(--font-body);
+    font-size: 14.5px;
+    color: var(--muted);
+  }
+</style>
