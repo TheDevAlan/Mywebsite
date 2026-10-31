@@ -29,7 +29,7 @@ Alle Workflow-Pfade `docs/…` gelten hier als `planung/…`.
 - [x] 09 — thoughts → `planung/segments/v2/09-thoughts.md`
 - [x] 10 — contact → `planung/segments/v2/10-contact.md`
 - [x] 11 — Impressum und 404 → `planung/segments/v2/11-impressum-404.md`
-- [ ] 12 — Weiterleitungen → `planung/segments/v2/12-weiterleitungen.md`
+- [x] 12 — Weiterleitungen → `planung/segments/v2/12-weiterleitungen.md`
 - [ ] 13 — Mobil und reduzierte Bewegung → `planung/segments/v2/13-mobil-reduced-motion.md`
 - [ ] 14 — Abschluss und Gesamtprüfung → `planung/segments/v2/14-abschluss-aufraeumen.md`
 

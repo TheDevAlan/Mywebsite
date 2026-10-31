@@ -7,5 +7,9 @@ import tailwind from "@astrojs/tailwind";
 export default defineConfig({
   site: 'https://alangawlik.de',
   outDir: './docs',
+  redirects: {
+    '/projects': '/works',
+    '/blog': '/thoughts'
+  },
   integrations: [mdx(), sitemap(), tailwind()]
 });

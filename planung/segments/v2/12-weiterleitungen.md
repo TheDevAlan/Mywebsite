@@ -1,5 +1,5 @@
 # Segment 12: Weiterleitungen alter Adressen, alte Projektseite weg
-Status: offen · Hängt ab von: 08, 09
+Status: erledigt · Hängt ab von: 08, 09
 Aus: planung/changes/01-umbau-design-relaunch.md
 
 ## Kontext
@@ -36,4 +36,4 @@ Aus „Was NICHT kaputtgehen darf“ (Änderung 01).
 Nach bestandenem Test: git add + commit mit sprechender Nachricht (Build-Ausgabe `docs/` mitcommitten),
 Status in dieser Datei und in planung/PLAN.md auf "erledigt" setzen,
 kurz in Klartext erklären, was gebaut wurde und wie man es ausführt.
-Grounding-Befunde: _(trägt /dev-build ein)_
+Grounding-Befunde: 2
