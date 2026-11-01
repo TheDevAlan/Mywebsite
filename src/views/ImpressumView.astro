@@ -3,15 +3,22 @@
 // ACHTUNG Rechtstext: Der Wortlaut ist unverändert aus der früheren Fassung übernommen (git show main:src/pages/impressum.astro).
 // Nicht umformulieren und keine Gesetzesverweise "korrigieren". Er bleibt in beiden Sprachen deutsch.
 import BaseLayout from "../layouts/BaseLayout.astro";
-import type { Lang } from "../i18n/ui";
+import PageShell from "../components/PageShell.astro";
+import LegalDoodle from "../components/LegalDoodle.astro";
+import { useTranslations, type Lang } from "../i18n/ui";
 
 export interface Props {
   lang?: Lang;
 }
 const { lang = "de" } = Astro.props;
+const t = useTranslations(lang);
 ---
 
 <BaseLayout lang={lang} title="Datenschutz & Impressum" bare>
+  <PageShell>
+  <Fragment slot="doodle">
+    <LegalDoodle alt={t("legal.doodleAlt")} />
+  </Fragment>
   <div class="legal">
     <h1>Datenschutz & Impressum</h1>
 
@@ -68,13 +75,13 @@ const { lang = "de" } = Astro.props;
       Unser Angebot enthält Links zu externen Webseiten Dritter, auf deren Inhalte wir keinen Einfluss haben. Deshalb können wir für diese fremden Inhalte auch keine Gewähr übernehmen. Für die Inhalte der verlinkten Seiten ist stets der jeweilige Anbieter oder Betreiber der Seiten verantwortlich.
     </p>
   </div>
+  </PageShell>
 </BaseLayout>
 
 <style>
+  /* Abstand oben und seitlich kommt aus PageShell, damit der Text auf gleicher Höhe wie auf den anderen Seiten beginnt */
   .legal {
     max-width: 640px;
-    padding: 72px 64px 72px 24px;
-    box-sizing: content-box;
     font-family: var(--font-body);
     font-size: 16px;
     line-height: 1.7;
@@ -113,9 +120,7 @@ const { lang = "de" } = Astro.props;
 
   @media (max-width: 800px) {
     .legal {
-      box-sizing: border-box;
       max-width: 100%;
-      padding: 24px 20px 40px;
       overflow-wrap: anywhere;
     }
     h1 {

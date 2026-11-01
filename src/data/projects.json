@@ -1,24 +1,71 @@
 [
   {
-    "category": "Projekte",
-    "category_en": "Projects",
-    "title": "KI-Schulung – kompakt, praxisnah, verständlich.",
-    "title_en": "AI training – compact, practical, easy to follow.",
-    "description": "Diese KI-Schulung biete ich an, um einen fundierten und praxisnahen Einstieg in die Welt der Künstlichen Intelligenz zu ermöglichen. In fünf Modulen lernst du, wie KI funktioniert, worauf du achten solltest und wie du sie im Arbeitsalltag sinnvoll einsetzt.",
-    "description_en": "I offer this AI training to give you a solid, hands-on introduction to the world of artificial intelligence. Over five modules, you'll learn how AI works, what to watch out for, and how to use it sensibly in your daily work.",
-    "href": "https://www.gsub.de/gsub-akademie/seminare/ki-schulung",
+    "category": "Apps und Code-Lösungen",
+    "category_en": "Apps & Code Solutions",
+    "title": "Meine Webseite",
+    "title_en": "My Website",
+    "description": "Die Webseite, auf der du gerade bist: frisch überarbeitet mit neuem Design und klarerer Struktur, zweisprachig in Deutsch und Englisch und mit Hell- und Dunkelmodus. Gebaut mit Astro, gehostet auf GitHub Pages.",
+    "description_en": "The website you're on right now: freshly reworked with a new design and a clearer structure, available in German and English, with a light and a dark mode. Built with Astro, hosted on GitHub Pages.",
+    "href": "https://github.com/TheDevAlan/Mywebsite",
+    "date": "2026-11-01",
     "isNew": true,
     "wip": false
   },
   {
-    "category": "Projekte",
-    "category_en": "Projects",
-    "title": "KI im sozialen Bereich sinnvoll einsetzen",
-    "title_en": "Using AI sensibly in the social sector",
-    "description": "Bei den AI Impact Days in Berlin haben wir unsere KI-Lösung vorgestellt: Ein Chatbot, der Förderanträge vorbefüllt und vorprüft, um bürokratische Hürden zu senken und Prozesse zu vereinfachen. Die intensive Diskussion mit Fachleuten und Teilnehmenden hat gezeigt: Der Bedarf ist da!",
-    "description_en": "At the AI Impact Days in Berlin, we presented our AI solution: a chatbot that pre-fills and pre-checks funding applications to lower bureaucratic hurdles and simplify processes. The lively discussion with experts and attendees showed: the need is real!",
-    "href": "https://www.linkedin.com/posts/gesellschaft-f%C3%BCr-soziale-unternehmensberatung_aiimpactdays-sozialeinnovation-faemrdermittel-activity-7316420568562462720-wJcQ/",
+    "category": "Apps und Code-Lösungen",
+    "category_en": "Apps & Code Solutions",
+    "title": "RoundnetStats",
+    "title_en": "RoundnetStats",
+    "description": "Roundnet-Punkte am Handgelenk zählen, das Spiel am Handy auswerten: Die Wear-OS-App zählt Matches nach RRR25-Regeln, die Android-App archiviert sie und zeigt Siegquote, Clutch-Werte und direkte Duelle. Aktuell in der Alpha-Phase.",
+    "description_en": "Count roundnet points on your wrist, analyze your game on your phone: the Wear OS app scores matches by RRR25 rules, the Android app archives them and shows win rate, clutch performance and head-to-head records. Currently in alpha.",
+    "href": "https://github.com/TheDevAlan/RoundnetStats",
+    "date": "2026-08-01",
     "isNew": true,
+    "wip": false
+  },
+  {
+    "category": "Apps und Code-Lösungen",
+    "category_en": "Apps & Code Solutions",
+    "title": "INI:GO",
+    "title_en": "INI:GO",
+    "description": "INI:GO verbindet Fokus-Timer und tägliches Wohlbefinden-Tracking in einer App: Pomodoro- und Deep-Work-Modus, Pausenimpulse, Check-in und Jahres-Heatmap. Kostenlos im Microsoft Store – ohne Abo, Konto, Werbung und Cloud.",
+    "description_en": "INI:GO combines a focus timer and a daily wellbeing tracker in one app: Pomodoro and deep-work modes, break prompts, daily check-in and a yearly heatmap. Free in the Microsoft Store – no subscription, account, ads or cloud.",
+    "href": "https://apps.microsoft.com/detail/9pf710pr20zb?hl=de-DE&gl=DE",
+    "date": "2026-06-02",
+    "isNew": true,
+    "wip": false
+  },
+  {
+    "category": "Apps und Code-Lösungen",
+    "category_en": "Apps & Code Solutions",
+    "title": "Preview: Vertragscontrolling",
+    "title_en": "Preview: Contract Controlling",
+    "description": "Eine lokale Vertragsmanagement-Software für Unternehmen: Dashboard mit Kennzahlen, Fristenwarnung per Ampel, Berichtspflichten, Abschluss-Checkliste, Änderungshistorie und Excel-Export. Gebaut mit Next.js, Prisma und PostgreSQL.",
+    "description_en": "A local contract management tool for companies: dashboard with key figures, traffic-light deadline warnings, reporting duties, closing checklist, change history and Excel export. Built with Next.js, Prisma and PostgreSQL.",
+    "href": "https://github.com/TheDevAlan/Vertragscontrolling",
+    "isNew": false,
+    "wip": false
+  },
+  {
+    "category": "Apps und Code-Lösungen",
+    "category_en": "Apps & Code Solutions",
+    "title": "PDF-Scanner",
+    "title_en": "PDF Scanner",
+    "description": "Spare wertvolle Zeit mit meinem OCR-gestützten Tool zur automatischen Erkennung und Umbenennung von Prüfvermerken und Schlussbescheiden. Kann einfach auf andere Dokumente angepasst werden.",
+    "description_en": "Save valuable time with my OCR-based tool that automatically recognises and renames audit notes and final notices. Easy to adapt to other documents.",
+    "href": "https://github.com/TheDevAlan/PDF-Scanner",
+    "isNew": false,
+    "wip": false
+  },
+  {
+    "category": "Apps und Code-Lösungen",
+    "category_en": "Apps & Code Solutions",
+    "title": "BAPP_Datenbasis",
+    "title_en": "BAPP_Datenbasis",
+    "description": "Der Code automatisiert die Extraktion von TLN-Daten aus den Eureka-TRS-Dokumenten, indem er die relevanten Informationen aus den PDFs in Textdateien umwandelt und diese strukturiert in eine Excel-Datei (Prüfvermerk) einträgt",
+    "description_en": "The code automates the extraction of participant data from Eureka TRS documents by converting the relevant information from the PDFs into text files and entering it in a structured way into an Excel file (audit note).",
+    "href": "https://github.com/TheDevAlan/BAPP_Datenbasis",
+    "isNew": false,
     "wip": false
   },
   {
@@ -121,6 +168,29 @@
     "wip": false
   },
   {
+    "category": "Events und Schulungen",
+    "category_en": "Events & Training",
+    "title": "KI-Schulung – kompakt, praxisnah, verständlich.",
+    "title_en": "AI training – compact, practical, easy to follow.",
+    "description": "Diese KI-Schulung biete ich an, um einen fundierten und praxisnahen Einstieg in die Welt der Künstlichen Intelligenz zu ermöglichen. In fünf Modulen lernst du, wie KI funktioniert, worauf du achten solltest und wie du sie im Arbeitsalltag sinnvoll einsetzt.",
+    "description_en": "I offer this AI training to give you a solid, hands-on introduction to the world of artificial intelligence. Over five modules, you'll learn how AI works, what to watch out for, and how to use it sensibly in your daily work.",
+    "href": "https://gsubakademie.de/seminar/ki-schulung/",
+    "date": "2026-10-09",
+    "isNew": false,
+    "wip": false
+  },
+  {
+    "category": "Events und Schulungen",
+    "category_en": "Events & Training",
+    "title": "KI im sozialen Bereich sinnvoll einsetzen",
+    "title_en": "Using AI sensibly in the social sector",
+    "description": "Bei den **AI Impact Days** in Berlin haben wir unsere KI-Lösung vorgestellt: Ein Chatbot, der Förderanträge vorbefüllt und vorprüft, um bürokratische Hürden zu senken und Prozesse zu vereinfachen. Die intensive Diskussion mit Fachleuten und Teilnehmenden hat gezeigt: Der Bedarf ist da!",
+    "description_en": "At the **AI Impact Days** in Berlin, we presented our AI solution: a chatbot that pre-fills and pre-checks funding applications to lower bureaucratic hurdles and simplify processes. The lively discussion with experts and attendees showed: the need is real!",
+    "href": "https://www.linkedin.com/posts/gesellschaft-f%C3%BCr-soziale-unternehmensberatung_aiimpactdays-sozialeinnovation-faemrdermittel-activity-7316420568562462720-wJcQ/",
+    "isNew": false,
+    "wip": false
+  },
+  {
     "category": "KI-Assistenz für das Fördermittelmanagement",
     "category_en": "AI Assistants for Grant Management",
     "title": "Ihre Assistenz im Fördermittelmanagement",
@@ -139,7 +209,7 @@
     "description": "Ich unterstütze dich bei der Prüfung und Eingruppierung von Personalstellen – stets basierend auf TV-L oder TVöD. Verlass dich auf eine präzise und regelkonforme Bewertung im Fördermittelmanagement!",
     "description_en": "I support you in reviewing and classifying staff positions – always based on TV-L or TVöD. Rely on a precise, rule-compliant assessment in grant management!",
     "href": "https://chatgpt.com/g/g-679ce1e2f8e0819198ed613cbdf05d23-pk-eingruppierung",
-    "isNew": true,
+    "isNew": false,
     "wip": false
   },
   {
@@ -161,28 +231,6 @@
     "description": "Dieser ChatBot überprüft Rechtschreibung, Grammatik und Stil, um deine Texte verständlicher und hochwertiger zu machen. Perfektioniere deine Worte mit präziser Korrektur und stilistischer Feinabstimmung!",
     "description_en": "This chatbot checks spelling, grammar and style to make your texts clearer and more polished. Perfect your words with precise correction and stylistic fine-tuning!",
     "href": "https://chatgpt.com/g/g-IFMSzWUk7-redigieren",
-    "isNew": false,
-    "wip": false
-  },
-  {
-    "category": "Maßgeschneiderte Code-Lösungen",
-    "category_en": "Custom Code Solutions",
-    "title": "PDF-Scanner",
-    "title_en": "PDF Scanner",
-    "description": "Spare wertvolle Zeit mit meinem OCR-gestützten Tool zur automatischen Erkennung und Umbenennung von Prüfvermerken und Schlussbescheiden. Kann einfach auf andere Dokumente angepasst werden.",
-    "description_en": "Save valuable time with my OCR-based tool that automatically recognises and renames audit notes and final notices. Easy to adapt to other documents.",
-    "href": "https://github.com/TheDevAlan/PDF-Scanner",
-    "isNew": true,
-    "wip": false
-  },
-  {
-    "category": "Maßgeschneiderte Code-Lösungen",
-    "category_en": "Custom Code Solutions",
-    "title": "BAPP_Datenbasis",
-    "title_en": "BAPP_Datenbasis",
-    "description": "Der Code automatisiert die Extraktion von TLN-Daten aus den Eureka-TRS-Dokumenten, indem er die relevanten Informationen aus den PDFs in Textdateien umwandelt und diese strukturiert in eine Excel-Datei (Prüfvermerk) einträgt",
-    "description_en": "The code automates the extraction of participant data from Eureka TRS documents by converting the relevant information from the PDFs into text files and entering it in a structured way into an Excel file (audit note).",
-    "href": "https://github.com/TheDevAlan/BAPP_Datenbasis",
     "isNew": false,
     "wip": false
   }

@@ -1,10 +1,13 @@
 ---
 // Seite "works" (6c). Routen: src/pages/works.astro (de), src/pages/en/works.astro (en)
-// Daten: src/data/projects.json. Englische Felder (category_en, title_en, description_en) sind
-// optional; fehlen sie, gilt der deutsche Text.
+// Daten: src/data/projects.json. Die Reihenfolge der Datei bestimmt die Reihenfolge der Gruppen.
+// Englische Felder (category_en, title_en, description_en) sind optional; fehlen sie, gilt der deutsche Text.
+// Beschreibung: **fett** ist erlaubt. Optional `date` (ISO, z. B. 2026-10-09) zeigt ein Datum auf der Kachel.
+// Gruppen mit mehr als VISIBLE Kacheln zeigen den Rest in einem ausklappbaren Bereich.
 import BaseLayout from "../layouts/BaseLayout.astro";
 import WorksDoodle from "../components/WorksDoodle.astro";
 import PageShell from "../components/PageShell.astro";
+import WorkTile from "../components/WorkTile.astro";
 import projects from "../data/projects.json";
 import { useTranslations, type Lang } from "../i18n/ui";
 
@@ -22,19 +25,54 @@ interface Project {
   description: string;
   description_en?: string;
   href: string;
+  date?: string;
   isNew: boolean;
   wip: boolean;
 }
 
+const VISIBLE = 3;
+
 const pick = (de: string, en?: string) => (lang === "en" && en ? en : de);
 
+// Erst maskieren, dann **fett** in <strong> umwandeln: kein fremdes HTML möglich
+const rich = (s: string) =>
+  s
+    .replace(/&/g, "&amp;")
+    .replace(/</g, "&lt;")
+    .replace(/>/g, "&gt;")
+    .replace(/\*\*(.+?)\*\*/g, "<strong>$1</strong>");
+
+// 09.10.2026 (de) bzw. 9 Oct 2026 (en); UTC, damit die Zeitzone den Tag nicht verschiebt
+const formatDate = (iso: string) =>
+  new Date(`${iso}T00:00:00Z`).toLocaleDateString(
+    lang === "en" ? "en-GB" : "de-DE",
+    lang === "en"
+      ? { day: "numeric", month: "short", year: "numeric", timeZone: "UTC" }
+      : { day: "2-digit", month: "2-digit", year: "numeric", timeZone: "UTC" },
+  );
+
 // Nach Kategorie gruppieren (Dateireihenfolge); globaler Index bestimmt den Kachel-Ton
-const groups: { name: string; items: { p: Project; tone: number }[] }[] = [];
+type Item = { p: Project; tone: number };
+const groups: { name: string; items: Item[] }[] = [];
 (projects as Project[]).forEach((p, i) => {
   const name = pick(p.category, p.category_en);
   let g = groups.find((x) => x.name === name);
   if (!g) groups.push((g = { name, items: [] }));
   g.items.push({ p, tone: (i * 5) % 6 });
+});
+
+const tileProps = ({ p, tone }: Item) => ({
+  href: p.href,
+  tone,
+  title: pick(p.title, p.title_en),
+  lang,
+  descriptionHtml: rich(pick(p.description, p.description_en)),
+  date: p.date,
+  dateLabel: p.date ? formatDate(p.date) : undefined,
+  isNew: p.isNew,
+  wip: p.wip,
+  newLabel: t("works.new"),
+  wipLabel: t("works.wip"),
 });
 ---
 
@@ -46,21 +84,29 @@ const groups: { name: string; items: { p: Project; tone: number }[] }[] = [];
   <h1 class="sr">{t("works.title")}</h1>
   <div class="works">
     {
-      groups.map((g) => (
-        <section class="group">
-          <h2>{g.name}</h2>
-          <div class="grid">
-            {g.items.map(({ p, tone }) => (
-              <a class="tile" href={p.href} target="_blank" rel="noopener" style={`background:var(--t${tone})`}>
-                {p.isNew && <span class="badge">{t("works.new")}</span>}
-                <span class="title" lang={lang}>{pick(p.title, p.title_en)}</span>
-                <span class="desc">{pick(p.description, p.description_en)}</span>
-                {p.wip && <span class="stamp">{t("works.wip")}</span>}
-              </a>
-            ))}
-          </div>
-        </section>
-      ))
+      groups.map((g) => {
+        const shown = g.items.slice(0, VISIBLE);
+        const rest = g.items.slice(VISIBLE);
+        return (
+          <section class="group">
+            <h2>{g.name}</h2>
+            <div class="grid">
+              {shown.map((item) => <WorkTile {...tileProps(item)} />)}
+            </div>
+            {rest.length > 0 && (
+              <details class="more">
+                <summary>
+                  <span class="s-open">{t("works.more")} ({rest.length})</span>
+                  <span class="s-close">{t("works.less")}</span>
+                </summary>
+                <div class="grid">
+                  {rest.map((item) => <WorkTile {...tileProps(item)} />)}
+                </div>
+              </details>
+            )}
+          </section>
+        );
+      })
     }
   </div>
   </PageShell>
@@ -110,66 +156,39 @@ const groups: { name: string; items: { p: Project; tone: number }[] }[] = [];
     grid-template-columns: repeat(3, minmax(0, 1fr));
     gap: 40px 26px;
   }
-  .tile {
-    position: relative;
-    aspect-ratio: 6 / 5; /* flacher als quadratisch; wächst bei längerem Inhalt von selbst mit */
-    box-sizing: border-box;
-    padding: 22px 20px 20px;
-    border-radius: 4px;
-    display: flex;
-    flex-direction: column;
-    gap: 8px;
+
+  /* Ausklappbarer Rest: natives <details>, per Tastatur bedienbar, ohne JavaScript */
+  .more > summary {
+    display: block;
+    width: fit-content;
+    padding: 4px 18px 6px;
+    cursor: pointer;
+    list-style: none;
+    font-family: var(--font-display);
+    font-weight: 700;
+    font-size: 24px;
+    line-height: 1.1;
     color: var(--ink);
-    text-decoration: none;
-    transition: transform 0.2s, background 0.35s;
+    border: 2.5px dashed var(--coral);
+    border-radius: 24px 18px 26px 16px;
+    transition: color 0.2s, background 0.2s;
   }
-  .tile:hover {
-    transform: translateY(-4px);
+  .more > summary::-webkit-details-marker {
+    display: none;
   }
-  .title {
-    font-family: var(--font-display);
-    font-weight: 700;
-    font-size: 23px;
-    line-height: 1.05;
-    overflow-wrap: anywhere;
-    hyphens: auto;
+  .more > summary:hover {
+    color: var(--coral);
   }
-  .desc {
-    font-family: var(--font-body);
-    font-size: 13.5px;
-    line-height: 1.45;
-    color: var(--text2);
-    display: -webkit-box;
-    -webkit-box-orient: vertical;
-    -webkit-line-clamp: 5;
-    line-clamp: 5;
-    overflow: hidden;
+  .more > summary:focus-visible {
+    outline: 2px solid var(--coral);
+    outline-offset: 4px;
   }
-  .badge {
-    position: absolute;
-    top: -12px;
-    right: -8px;
-    padding: 1px 10px;
-    background: var(--ink);
-    color: var(--bg);
-    font-family: var(--font-display);
-    font-weight: 700;
-    font-size: 19px;
-    border-radius: 20px 16px 22px 14px;
-    transform: rotate(10deg);
+  .more[open] > summary {
+    margin-bottom: 40px;
   }
-  .stamp {
-    position: absolute;
-    bottom: 12px;
-    right: 8px;
-    padding: 1px 10px;
-    color: var(--coral-d);
-    border: 3px double var(--coral-d);
-    font-family: var(--font-display);
-    font-weight: 700;
-    font-size: 22px;
-    text-transform: uppercase;
-    transform: rotate(-12deg);
+  .more[open] .s-open,
+  .more:not([open]) .s-close {
+    display: none;
   }
 
   /* Raster: 3 Spalten, bis 800 px 2, unter 500 px 1 */
@@ -184,25 +203,13 @@ const groups: { name: string; items: { p: Project; tone: number }[] }[] = [];
     h2 {
       font-size: 28px;
     }
+    .more[open] > summary {
+      margin-bottom: 32px;
+    }
   }
   @media (max-width: 499px) {
     .grid {
       grid-template-columns: minmax(0, 1fr);
-    }
-    /* Einspaltig sind die Kacheln so breit wie der Bildschirm: Höhe nach Inhalt statt festem Verhältnis */
-    .tile {
-      aspect-ratio: auto;
-      min-height: 150px;
-      padding-bottom: 32px;
-    }
-  }
-
-  @media (prefers-reduced-motion: reduce) {
-    .tile {
-      transition: background 0.35s;
-    }
-    .tile:hover {
-      transform: none;
     }
   }
 </style>

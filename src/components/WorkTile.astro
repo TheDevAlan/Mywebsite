@@ -1,0 +1,120 @@
+---
+// Eine Kachel der Seite "works" (App, Assistent, Schulung, Auftritt). Gruppen und Raster: src/views/WorksView.astro
+// `descriptionHtml` ist bereits maskiert (nur <strong> aus **fett** ist erlaubt), siehe `rich()` in WorksView.
+export interface Props {
+  href: string;
+  tone: number;
+  title: string;
+  lang: string;
+  descriptionHtml: string;
+  date?: string; // ISO, z. B. 2026-10-09 (für datetime)
+  dateLabel?: string; // fertig formatiert, z. B. 09.10.2026
+  isNew?: boolean;
+  wip?: boolean;
+  newLabel: string;
+  wipLabel: string;
+}
+const { href, tone, title, lang, descriptionHtml, date, dateLabel, isNew, wip, newLabel, wipLabel } = Astro.props;
+---
+
+<a class="tile" href={href} target="_blank" rel="noopener" style={`background:var(--t${tone})`}>
+  {isNew && <span class="badge">{newLabel}</span>}
+  <span class="title" lang={lang}>{title}</span>
+  <span class="desc" set:html={descriptionHtml} />
+  {date && dateLabel && <time class="date" datetime={date}>{dateLabel}</time>}
+  {wip && <span class="stamp">{wipLabel}</span>}
+</a>
+
+<style>
+  .tile {
+    position: relative;
+    aspect-ratio: 6 / 5; /* flacher als quadratisch; wächst bei längerem Inhalt von selbst mit */
+    box-sizing: border-box;
+    padding: 22px 20px 20px;
+    border-radius: 4px;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    color: var(--ink);
+    text-decoration: none;
+    transition: transform 0.2s, background 0.35s;
+  }
+  .tile:hover {
+    transform: translateY(-4px);
+  }
+  .date {
+    margin-top: auto; /* schiebt das Datum an den unteren Rand, links */
+    font-family: var(--font-display);
+    font-weight: 700;
+    font-size: 19px;
+    line-height: 1;
+    color: var(--coral-d);
+  }
+  .title {
+    font-family: var(--font-display);
+    font-weight: 700;
+    font-size: 23px;
+    line-height: 1.05;
+    overflow-wrap: anywhere;
+    hyphens: auto;
+  }
+  .desc {
+    font-family: var(--font-body);
+    font-size: 13.5px;
+    line-height: 1.45;
+    color: var(--text2);
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 5;
+    line-clamp: 5;
+    overflow: hidden;
+  }
+  .desc :global(strong) {
+    font-weight: 700;
+    color: var(--ink);
+  }
+  .badge {
+    position: absolute;
+    top: -12px;
+    right: -8px;
+    padding: 1px 10px;
+    background: var(--ink);
+    color: var(--bg);
+    font-family: var(--font-display);
+    font-weight: 700;
+    font-size: 19px;
+    border-radius: 20px 16px 22px 14px;
+    transform: rotate(10deg);
+  }
+  .stamp {
+    position: absolute;
+    bottom: 12px;
+    right: 8px;
+    padding: 1px 10px;
+    color: var(--coral-d);
+    border: 3px double var(--coral-d);
+    font-family: var(--font-display);
+    font-weight: 700;
+    font-size: 22px;
+    text-transform: uppercase;
+    transform: rotate(-12deg);
+  }
+
+  @media (max-width: 499px) {
+    /* Einspaltig sind die Kacheln so breit wie der Bildschirm: Höhe nach Inhalt statt festem Verhältnis */
+    .tile {
+      aspect-ratio: auto;
+      min-height: 150px;
+      padding-bottom: 32px;
+    }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .tile {
+      transition: background 0.35s;
+    }
+    .tile:hover {
+      transform: none;
+    }
+  }
+</style>
