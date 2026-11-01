@@ -1,0 +1,37 @@
+---
+// Doodle der Seite "about" (animierte SVG-Zeichnung). Ruhe: Zustand A, Hover/Tippen/Fokus: Zustand B.
+// Gemeinsames CSS: src/styles/doodles.css
+import "../styles/doodles.css";
+
+export interface Props {
+  alt: string;
+}
+const { alt } = Astro.props;
+---
+
+<div class="doodle doodle-sm doodle-about" tabindex="0" role="img" aria-label={alt}>
+<svg width="260" height="200" viewBox="33 -1 347 267" xmlns="http://www.w3.org/2000/svg"><defs><filter id="wobble-about" x="-5%" y="-5%" width="110%" height="110%"><feTurbulence type="fractalNoise" baseFrequency="0.035" numOctaves="2" seed="1"><animate attributeName="seed" values="1;2;3" dur="0.45s" calcMode="discrete" repeatCount="indefinite"/></feTurbulence><feDisplacementMap in="SourceGraphic" scale="2.2"/></filter></defs><g class="lines" filter="url(#wobble-about)"><path class="ink" d="M70 254C160 250 260 256 350 252"/><path class="ink thin" d="M100 260h40M260 261h50"/><!-- Oberkörper: dunkelgrüner Pulli -->
+    <path class="ink" style="fill:var(--sweater)" d="M158 252C157 214 168 184 196 164L216 164C244 184 255 214 254 252Z"/>
+    <path class="ink" style="fill:var(--sweater)" d="M194 163Q206 178 218 163"/>
+    <path fill="none" style="stroke:var(--hl)" stroke-opacity=".45" stroke-width="1.2" stroke-linecap="round" d="M197 166q9 8 18 0M174 214q5-9 12-14M240 202q3 6 4 12"/>
+
+    <!-- Hals -->
+    <g class="skin-part"><path style="fill:var(--skin)" d="M199 140L198 164L215 164L214 140Z"/><path class="ink" d="M199 142L198 163M214 142L215 163"/></g>
+
+    <g class="head-pose tb about-head"><g class="head-bob tb skin-part"><!-- Ohren -->
+      <path class="ink fillp" d="M182 100c-8-4-11 12-1 16M231 100c8-4 11 12 1 16"/>
+      <!-- Gesicht (etwas länger, schmales Kinn) -->
+      <path class="ink fillp" d="M181 96C180 80 192 72 207 72C223 72 233 82 232 100C231 124 225 145 207 149C190 149 182 126 181 96Z"/>
+      <!-- Bart -->
+      <path style="fill:var(--beard)" d="M182 106C183 128 190 146 207 149C224 146 230 128 231 106C228 116 224 122 219 124C213 120 201 120 195 124C190 122 185 116 182 106Z"/>
+      <path class="ink thin" d="M186 118l1 2M189 126l1 2M193 134l1 2M199 140l1 2M206 143l0 2M213 140l-1 2M219 134l-1 2M224 126l-1 2M227 118l-1 2M196 130l1 1M203 136l0 2M211 135l-1 2M217 128l-1 1M191 112l0 2M222 112l0 2"/>
+      <path class="ink" style="fill:var(--stache)" stroke-width="1" d="M195 123Q207 115 219 123Q207 120 195 123Z"/>
+      <!-- Haare: voll, verwuschelt, Pony zur Seite -->
+      <path class="ink" style="fill:var(--hair);stroke:var(--outline)" d="M180 106C172 88 172 70 186 60C196 50 214 48 228 55C236 58 244 54 249 49C247 59 243 63 241 66C247 74 245 90 236 102C234 93 231 86 225 83C214 89 200 90 190 85C186 91 184 99 183 107Z"/>
+      <path fill="none" style="stroke:var(--hl)" stroke-opacity=".55" stroke-width="1.3" stroke-linecap="round" d="M190 70q12-9 26-6M196 79q14-5 28 1M184 82q2-10 8-16"/>
+      <path class="ink thin" style="stroke:var(--outline)" d="M222 56c6-8 14-10 22-9M204 52c2-7 8-11 15-11M188 61c-5-4-7-10-5-15M239 66c5-1 9 2 11 6"/>
+      <!-- Nase -->
+      <path class="ink" d="M208 97C206 107 204 113 201 116q5 4 11 1"/>
+
+      <g class="state-a"><path class="ink" stroke-width="3" d="M187 92q7-5 14-1M212 91q7-4 14 1"/><circle class="ink fillp" cx="195" cy="104" r="5.5"/><circle cx="195.5" cy="104.5" r="3" style="fill:var(--iris)"/><circle cx="195.5" cy="104.5" r="1.4" style="fill:var(--pupil)"/><circle class="ink fillp" cx="219" cy="104" r="5.5"/><circle cx="219.5" cy="104.5" r="3" style="fill:var(--iris)"/><circle cx="219.5" cy="104.5" r="1.4" style="fill:var(--pupil)"/><path class="ink" d="M199 127q8 6 16 0"/></g><g class="state-b"><path class="ink" stroke-width="3" d="M187 91q7-5 14-1M212 90q7-4 14 1"/><path class="ink" d="M189 106q5.5-6 11 0M213 106q5.5-6 11 0"/><path class="acc" d="M197 125Q207 138 219 125Q207 128 197 125Z"/><path style="fill:var(--teeth)" d="M198.5 125.6Q207 128.6 217.5 125.6Q208 131.5 198.5 125.6Z"/><path class="ink thin" d="M197 125Q207 138 219 125Q207 128 197 125Z"/></g></g></g><g class="tb"><path d="M244 198Q294 200 302 160" fill="none" style="stroke:var(--outline)" stroke-width="15" stroke-linecap="round" stroke-linejoin="round"/><path d="M244 198Q294 200 302 160" fill="none" style="stroke:var(--sweater)" stroke-width="10" stroke-linecap="round" stroke-linejoin="round"/><g class="forearm about-forearm tb"><path d="M302 160L305 128" fill="none" style="stroke:var(--outline)" stroke-width="14" stroke-linecap="round" stroke-linejoin="round"/><path d="M302 160L305 128" fill="none" style="stroke:var(--sweater)" stroke-width="9" stroke-linecap="round" stroke-linejoin="round"/><path d="M300 106l-2-10M305 104l0-11M310 105l2-10M296 114l-8-5" fill="none" style="stroke:var(--outline)" stroke-width="5.5" stroke-linecap="round"/><path d="M300 106l-2-10M305 104l0-11M310 105l2-10M296 114l-8-5" fill="none" style="stroke:var(--skin)" stroke-width="2.6" stroke-linecap="round"/><circle cx="305" cy="114" r="10" style="fill:var(--skin);stroke:var(--outline)" stroke-width="2.4"/><g class="state-b"><path class="accs" d="M324 100q6 10 0 20M332 96q8 14 0 28"/></g></g></g><g class="state-b about-hi tb"><path class="ink fillp" d="M110 28C134 28 146 37 146 50C146 62 134 70 120 70L134 84L108 71C88 70 74 62 74 50C74 37 86 28 110 28Z"/><path class="ink" stroke-width="3" d="M96 40v22M96 52q8-9 13 0v10M117 50v12M125 38v15"/><circle cx="117" cy="43.5" r="2" style="fill:var(--ink)"/><circle cx="125" cy="60" r="2" style="fill:var(--ink)"/></g></g></svg>
+</div>

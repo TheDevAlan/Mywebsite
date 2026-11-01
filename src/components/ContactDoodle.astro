@@ -1,0 +1,14 @@
+---
+// Doodle der Seite "contact" (animierte SVG-Zeichnung). Ruhe: Zustand A, Hover/Tippen/Fokus: Zustand B.
+// Gemeinsames CSS: src/styles/doodles.css
+import "../styles/doodles.css";
+
+export interface Props {
+  alt: string;
+}
+const { alt } = Astro.props;
+---
+
+<div class="doodle doodle-sm doodle-contact" tabindex="0" role="img" aria-label={alt}>
+<svg width="260" height="200" viewBox="0 0 260 200" xmlns="http://www.w3.org/2000/svg"><defs><filter id="wobble-contact" x="-5%" y="-5%" width="110%" height="110%"><feTurbulence type="fractalNoise" baseFrequency="0.035" numOctaves="2" seed="1"><animate attributeName="seed" values="1;2;3" dur="0.45s" calcMode="discrete" repeatCount="indefinite"/></feTurbulence><feDisplacementMap in="SourceGraphic" scale="2.2"/></filter></defs><g class="lines" filter="url(#wobble-contact)"><path class="ink" d="M18 162C90 159 170 164 242 161"/><path class="ink" d="M22 170C90 167 170 172 238 169"/><path class="ink thin" d="M50 176l-4 8M80 176l-4 8M180 176l-4 8M210 176l-4 8"/><g class="contact-left tb"><g class="contact-bob tb"><path class="ink thin steam" d="M80 90c-6-8 6-14 0-24M96 90c-6-8 6-14 0-24"/><path class="ink" d="M63 112c-16 0-16 26 2 26"/><path class="ink fillp" d="M62 98L67 160L109 160L114 98Z"/><path class="ink thin" d="M62 98Q88 105 114 98"/><path class="acc" d="M63.5 114L112.7 114L111.7 126L64.5 126Z"/><g class="state-a"><circle cx="81" cy="140" r="2" style="fill:var(--ink)"/><circle cx="96" cy="140" r="2" style="fill:var(--ink)"/><path class="ink thin" d="M84 147q4.5 4 9 0"/></g><g class="state-b"><path class="ink thin" d="M77 141q4-5 8 0M92 141q4-5 8 0"/><path class="ink thin" d="M82 146q6.5 7 13 0"/></g></g></g><g class="contact-right tb"><g class="contact-bob b tb"><g transform="translate(260 0) scale(-1 1)"><path class="ink thin steam" d="M80 90c-6-8 6-14 0-24M96 90c-6-8 6-14 0-24"/><path class="ink" d="M63 112c-16 0-16 26 2 26"/><path class="ink fillp" d="M62 98L67 160L109 160L114 98Z"/><path class="ink thin" d="M62 98Q88 105 114 98"/><path class="acc" d="M63.5 114L112.7 114L111.7 126L64.5 126Z"/><g class="state-a"><circle cx="81" cy="140" r="2" style="fill:var(--ink)"/><circle cx="96" cy="140" r="2" style="fill:var(--ink)"/><path class="ink thin" d="M84 147q4.5 4 9 0"/></g><g class="state-b"><path class="ink thin" d="M77 141q4-5 8 0M92 141q4-5 8 0"/><path class="ink thin" d="M82 146q6.5 7 13 0"/></g></g></g></g><g class="state-b contact-burst tb"><path class="accs" d="M130 82v-12M121 85l-7-7M139 85l7-7M117 93h-9M143 93h9"/><circle cx="124" cy="75" r="1.8" style="fill:var(--stache)"/><circle cx="137" cy="72" r="1.5" style="fill:var(--stache)"/></g></g></svg>
+</div>

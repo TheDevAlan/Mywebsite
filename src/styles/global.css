@@ -1,6 +1,28 @@
 /* Design-Fundament: Farb-Tokens (Hell/Dunkel), Schriften, Cursor.
    Werte stammen aus planung/design-handoff/README.md (Theming). */
 
+/* Gaegu hat keine Umlaute (ä ö ü Ä Ö Ü ß). Ohne diese Regel zeichnet der Browser sie mit seiner
+   Standard-Handschriftschrift, und die wirkt zu groß und zu fett. Stattdessen kommen sie aus Karla
+   (ist ohnehin geladen), per size-adjust auf Gaegus Buchstabenhöhe verkleinert. */
+@font-face {
+  font-family: 'Gaegu';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url('../../node_modules/@fontsource/karla/files/karla-latin-400-normal.woff2') format('woff2');
+  unicode-range: U+00C4, U+00D6, U+00DC, U+00E4, U+00F6, U+00FC, U+00DF;
+  size-adjust: 80%;
+}
+@font-face {
+  font-family: 'Gaegu';
+  font-style: normal;
+  font-weight: 700;
+  font-display: swap;
+  src: url('../../node_modules/@fontsource/karla/files/karla-latin-700-normal.woff2') format('woff2');
+  unicode-range: U+00C4, U+00D6, U+00DC, U+00E4, U+00F6, U+00FC, U+00DF;
+  size-adjust: 80%;
+}
+
 :root {
   --font-display: 'Gaegu', cursive;
   --font-body: 'Karla', system-ui, sans-serif;

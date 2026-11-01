@@ -1,56 +1,91 @@
 // Zentrales Wörterbuch. Deutsch ist die Hauptsprache (ohne URL-Präfix), Englisch liegt unter /en/.
-// Fehlt ein Eintrag in `en`, wird der deutsche Text verwendet – Fallback bewusst hier und
-// nicht über Astros i18n-Fallback (siehe planung/decisions.md, E-08).
+// Beide Sprachen sind vollständig und je einsprachig. Der Rückfall auf Deutsch (`t()`) bleibt nur
+// als Sicherheitsnetz, falls später ein Schlüssel ergänzt und in `en` vergessen wird (siehe planung/decisions.md, E-08).
+// Navigationsbegriffe (`nav.*`) sind je Sprache übersetzt; die Adressen bleiben englisch (/about, /works, …).
+// Rechtstext (Impressum/Datenschutz) bleibt deutsch, siehe ImpressumView.astro.
 
 export const languages = { de: 'DE', en: 'EN' } as const;
 export type Lang = keyof typeof languages;
 export const defaultLang: Lang = 'de';
 
 const de = {
+  'meta.description': 'Portfolio von Alan Gawlik: KI-Manager, Apps und Projekte.',
   'sidebar.home': 'alan. – Startseite',
+  'nav.about': 'über mich',
+  'nav.works': 'projekte',
+  'nav.thoughts': 'gedanken',
+  'nav.contact': 'kontakt',
   'sidebar.navLabel': 'Hauptnavigation',
   'sidebar.langLabel': 'Sprache',
+  'sidebar.themeLight': 'hell',
+  'sidebar.themeDark': 'dunkel',
   'footer.legal': 'Datenschutz & Impressum',
-  'home.doodleA': 'du am Schreibtisch, tief im Code',
-  'home.doodleB': 'du schaust hoch und winkst',
-  'home.claim': 'I build apps - for work, for life, for fun.',
-  'about.doodleA': 'du, winkend',
-  'about.doodleB': 'winkt zurück',
-  'about.title': 'KI-Enthusiast und Hobby-Entwickler',
+  'home.doodleAlt': 'Zeichnung: Ich am Schreibtisch beim Programmieren – beim Darüberfahren schaue ich hoch und winke',
+  'home.claim': 'Ich baue Apps\nfür die Arbeit, fürs Leben\nund just for fun.',
+  'about.doodleAlt': 'Zeichnung: Ich winke – beim Darüberfahren winke ich fröhlich zurück und sage hi',
+  'about.title': 'Hi, ich bin Alan.',
   'about.text':
-    'Auf dieser Webseite stelle ich meine Projekte vor, die den Workflow erleichtern und den Alltag bereichern sollen. Ich entwickle zudem maßgeschneiderte Code-Lösungen, die Arbeitsprozesse effizienter gestalten und repetitive Aufgaben automatisieren.',
+    'Ich bin KI-Manager. Beruflich sorge ich dafür, dass KI im Arbeitsalltag ankommt: durchdacht, datenschutzkonform und so, dass sie Menschen wirklich entlastet. Was ich dabei lerne, probiere ich in eigenen Projekten aus. Manche machen die Arbeit leichter, manche den Alltag, und manche sind einfach Spielerei. Hier findest du sie alle.',
   'about.linkedin': 'linkedin',
   'about.github': 'github',
   'about.coffee': 'kaffee spendieren',
-  'works.title': 'works',
+  'works.doodleAlt': 'Zeichnung: Ich hämmere an einem Browserfenster – beim Darüberfahren ist das Werk fertig',
+  'works.title': 'projekte',
   'works.new': 'neu!',
   'works.wip': 'in arbeit',
-  'works.doodleA': 'du mit Werkzeug in der Hand',
-  'works.doodleB': 'das Werk ist fertig',
-  'thoughts.title': 'thoughts',
+  'thoughts.doodleAlt': 'Zeichnung: Ich denke nach, Gedankenblase über dem Kopf – beim Darüberfahren geht die Glühbirne an',
+  'thoughts.title': 'gedanken',
   'thoughts.sub': 'Kleine Texte über verschiedene Sachen.',
-  'thoughts.doodleA': 'du, nachdenklich, Gedankenblase über dem Kopf',
-  'thoughts.doodleB': 'Glühbirne geht an',
   'thoughts.empty': 'Hier ist noch nichts. Gedanken kommen bald.',
-  'contact.doodleA': 'zwei Tassen Kaffee',
-  'contact.doodleB': 'Tassen stoßen an',
+  'contact.doodleAlt': 'Zeichnung: Zwei Kaffeetassen – beim Darüberfahren stoßen sie an',
   'contact.title': 'sag hallo.',
   'contact.text': 'Eine Mail ist der schnellste Weg zu mir. Oder du findest mich hier im Internet.',
   'contact.github': 'github',
   'contact.linkedin': 'linkedin',
-  'contact.coffee': 'buy me a coffee',
+  'contact.coffee': 'kaffee spendieren',
   'notfound.text': 'Hier ist nichts. Vielleicht hast du dich verlaufen.',
   'notfound.home': 'zur startseite',
 } as const;
 
 export type UiKey = keyof typeof de;
 
-// Englisch: nur ergänzen, was übersetzt ist. `footer.legal` fehlt absichtlich (Alan liefert).
-const en: Partial<Record<UiKey, string>> = {
+const en: Record<UiKey, string> = {
+  'meta.description': 'Portfolio of Alan Gawlik: AI manager, apps and projects.',
   'sidebar.home': 'alan. – home',
+  'nav.about': 'about',
+  'nav.works': 'works',
+  'nav.thoughts': 'thoughts',
+  'nav.contact': 'contact',
   'sidebar.navLabel': 'Main navigation',
   'sidebar.langLabel': 'Language',
-  'home.claim': 'I build apps - for work, for life, for fun.',
+  'sidebar.themeLight': 'light',
+  'sidebar.themeDark': 'dark',
+  'footer.legal': 'Privacy & Legal Notice',
+  'home.doodleAlt': 'Drawing: me at my desk, coding – when you hover over it, I look up and wave',
+  'home.claim': 'I build apps\nfor work, for life, for fun.',
+  'about.doodleAlt': 'Drawing: me waving – when you hover over it, I wave back cheerfully and say hi',
+  'about.title': "Hi, I'm Alan.",
+  'about.text':
+    "I'm an AI manager. At work, I make sure AI actually lands in everyday work: well thought out, privacy-compliant, and in a way that genuinely takes load off people. What I learn along the way, I try out in projects of my own. Some make work easier, some make daily life easier, and some are just for fun. You'll find them all here.",
+  'about.linkedin': 'linkedin',
+  'about.github': 'github',
+  'about.coffee': 'buy me a coffee',
+  'works.doodleAlt': 'Drawing: me hammering away at a browser window – when you hover over it, the work is done',
+  'works.title': 'works',
+  'works.new': 'new!',
+  'works.wip': 'wip',
+  'thoughts.doodleAlt': 'Drawing: me thinking, thought bubble above my head – when you hover over it, the light bulb switches on',
+  'thoughts.title': 'thoughts',
+  'thoughts.sub': 'Short texts about various things.',
+  'thoughts.empty': 'Nothing here yet. Thoughts are coming soon.',
+  'contact.doodleAlt': 'Drawing: two coffee cups – when you hover over them, they clink',
+  'contact.title': 'say hello.',
+  'contact.text': 'An email is the quickest way to reach me. Or you can find me here around the internet.',
+  'contact.github': 'github',
+  'contact.linkedin': 'linkedin',
+  'contact.coffee': 'buy me a coffee',
+  'notfound.text': "There's nothing here. Maybe you took a wrong turn.",
+  'notfound.home': 'back to home',
 };
 
 export const ui: Record<Lang, Partial<Record<UiKey, string>>> = { de, en };

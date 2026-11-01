@@ -14,7 +14,7 @@ export interface Props {
 const { active, sticky = false, lang = 'de' } = Astro.props;
 const t = useTranslations(lang);
 
-// Navigationsbegriffe bleiben in beiden Sprachen englisch
+// Beschriftung kommt aus dem Wörterbuch (nav.*), die Adressen bleiben englisch
 const nav = [
   { id: 'about', href: localePath('/about', lang) },
   { id: 'works', href: localePath('/works', lang) },
@@ -40,7 +40,7 @@ const langLinks = (Object.keys(languages) as Lang[]).map((code) => ({
           class:list={[{ current: active === item.id }]}
           aria-current={active === item.id ? 'page' : undefined}
         >
-          {item.id}
+          {t(`nav.${item.id}`)}
         </a>
       ))
     }
@@ -66,14 +66,14 @@ const langLinks = (Object.keys(languages) as Lang[]).map((code) => ({
   </div>
 
   <div class="switch theme">
-    <button type="button" class="theme-btn sun" data-set-theme="light" aria-label="hell">
+    <button type="button" class="theme-btn sun" data-set-theme="light" aria-label={t('sidebar.themeLight')}>
       <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
         ><circle cx="12" cy="12" r="4.2"></circle><path d="M12 2.5v2.3M12 19.2v2.3M2.5 12h2.3M19.2 12h2.3M5.3 5.3l1.6 1.6M17.1 17.1l1.6 1.6M5.3 18.7l1.6-1.6M17.1 6.9l1.6-1.6"
         ></path></svg
       >
     </button>
     <span class="slash">/</span>
-    <button type="button" class="theme-btn moon" data-set-theme="dark" aria-label="dunkel">
+    <button type="button" class="theme-btn moon" data-set-theme="dark" aria-label={t('sidebar.themeDark')}>
       <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"
         ><path d="M19.5 14.8A8 8 0 0 1 9.2 4.5 8 8 0 1 0 19.5 14.8Z"></path></svg
       >
@@ -112,7 +112,7 @@ const langLinks = (Object.keys(languages) as Lang[]).map((code) => ({
 
   .logo {
     font-weight: 700;
-    font-size: 52px;
+    font-size: 78px;
     line-height: 1;
     color: var(--ink);
     text-decoration: none;
@@ -146,9 +146,21 @@ const langLinks = (Object.keys(languages) as Lang[]).map((code) => ({
   .nav a:hover {
     color: var(--coral);
   }
+  /* Aktiver Punkt: eine weiche, handgezeichnet wirkende Welle (gut eine Schwingung, egal wie lang das Wort).
+     Die Form ist eine Maske, die Farbe kommt aus --coral (hell und dunkel). */
   .nav a.current {
-    text-decoration: underline wavy var(--coral);
-    text-underline-offset: 6px;
+    position: relative;
+  }
+  .nav a.current::after {
+    content: '';
+    position: absolute;
+    left: -2px;
+    right: -2px;
+    bottom: -9px;
+    height: 10px;
+    background: var(--coral);
+    -webkit-mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 120 12' preserveAspectRatio='none'%3E%3Cpath d='M3 7 C 20 0 40 13 62 6 S 100 1 117 6' fill='none' stroke='black' stroke-width='2.6' stroke-linecap='round' vector-effect='non-scaling-stroke'/%3E%3C/svg%3E") center / 100% 100% no-repeat;
+    mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 120 12' preserveAspectRatio='none'%3E%3Cpath d='M3 7 C 20 0 40 13 62 6 S 100 1 117 6' fill='none' stroke='black' stroke-width='2.6' stroke-linecap='round' vector-effect='non-scaling-stroke'/%3E%3C/svg%3E") center / 100% 100% no-repeat;
   }
 
   .switch {
@@ -230,7 +242,7 @@ const langLinks = (Object.keys(languages) as Lang[]).map((code) => ({
     }
     .logo {
       grid-area: logo;
-      font-size: 40px;
+      font-size: 60px;
     }
     .nav {
       grid-area: nav;

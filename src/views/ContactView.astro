@@ -1,7 +1,7 @@
 ---
 // Seite "contact" (6e). Routen: src/pages/contact.astro (de), src/pages/en/contact.astro (en)
 import BaseLayout from "../layouts/BaseLayout.astro";
-import Doodle from "../components/Doodle.astro";
+import ContactDoodle from "../components/ContactDoodle.astro";
 import PageShell from "../components/PageShell.astro";
 import SocialLinks from "../components/SocialLinks.astro";
 import { useTranslations, type Lang } from "../i18n/ui";
@@ -18,16 +18,7 @@ const EMAIL = "info@alangawlik.de";
 <BaseLayout lang={lang} active="contact" bare>
   <PageShell>
     <Fragment slot="doodle">
-      <Doodle
-        name="contact"
-        labelA={t("contact.doodleA")}
-        labelB={t("contact.doodleB")}
-        width={260}
-        height={200}
-        rotate={3}
-        hoverRotate={-2}
-        hoverScale={1.03}
-      />
+      <ContactDoodle alt={t("contact.doodleAlt")} />
     </Fragment>
     <h1>{t("contact.title")}</h1>
     <p class="text">{t("contact.text")}</p>

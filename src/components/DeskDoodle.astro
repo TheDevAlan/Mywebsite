@@ -1,0 +1,342 @@
+---
+// Startseiten-Doodle "am Schreibtisch" (animierte SVG-Zeichnung, geliefert als doodle-schreibtisch.html).
+// Idle: tippt und wippt. Hover, Fokus oder Antippen: schaut hoch und winkt.
+// Farben: Hellmodus ist Standard, Dunkelmodus kommt über data-theme="dark" am <html> (ThemeScript).
+export interface Props {
+  alt: string;
+}
+const { alt } = Astro.props;
+---
+
+<div class="desk" tabindex="0" role="img" aria-label={alt}>
+  <svg width="400" height="320" viewBox="0 0 400 320" xmlns="http://www.w3.org/2000/svg">
+    <defs>
+      <!-- Handgezeichnetes "Zittern" der Linien -->
+      <filter id="dd-wobble" x="-5%" y="-5%" width="110%" height="110%">
+        <feTurbulence type="fractalNoise" baseFrequency="0.035" numOctaves="2" seed="1">
+          <animate attributeName="seed" values="1;2;3" dur="0.45s" calcMode="discrete" repeatCount="indefinite"></animate>
+        </feTurbulence>
+        <feDisplacementMap in="SourceGraphic" scale="2.2"></feDisplacementMap>
+      </filter>
+    </defs>
+
+    <g class="lines" filter="url(#dd-wobble)">
+
+      <!-- Code-Zeichen -->
+      <g class="floats">
+        <g class="floaty tb">
+          <path class="ink thin" d="M112 70c-6 0-6 4-6 8v6c0 3-2 5-5 5c3 0 5 2 5 5v6c0 4 0 8 6 8"></path>
+          <path class="ink thin" d="M126 70c6 0 6 4 6 8v6c0 3 2 5 5 5c-3 0-5 2-5 5v6c0 4 0 8-6 8"></path>
+        </g>
+        <g class="floaty b tb"><path class="accs" d="M292 64l-8 8 8 8M310 64l8 8-8 8M304 60l-6 24"></path></g>
+        <g class="floaty c tb"><path class="ink thin" d="M150 52v14M156 52c6 0 6 14 0 14c-6 0-6-14 0-14"></path></g>
+      </g>
+
+      <!-- Oberkörper: dunkelgrüner Pulli -->
+      <path class="ink" style="fill:var(--sweater)" d="M158 252C157 214 168 184 196 164L216 164C244 184 255 214 254 252Z"></path>
+      <path class="ink" style="fill:var(--sweater)" d="M194 163Q206 178 218 163"></path>
+      <path fill="none" style="stroke:var(--hl)" stroke-opacity=".45" stroke-width="1.2" stroke-linecap="round" d="M197 166q9 8 18 0M174 214q5-9 12-14M240 202q3 6 4 12"></path>
+
+      <!-- Hals -->
+      <g class="skin-part">
+        <path style="fill:var(--skin)" d="M199 140L198 164L215 164L214 140Z"></path>
+        <path class="ink" d="M199 142L198 163M214 142L215 163"></path>
+      </g>
+
+      <!-- Kopf -->
+      <g class="head-pose tb"><g class="head-bob tb skin-part">
+        <!-- Ohren -->
+        <path class="ink fillp" d="M182 100c-8-4-11 12-1 16M231 100c8-4 11 12 1 16"></path>
+        <!-- Gesicht -->
+        <path class="ink fillp" d="M181 96C180 80 192 72 207 72C223 72 233 82 232 100C231 124 225 145 207 149C190 149 182 126 181 96Z"></path>
+        <!-- Bart -->
+        <path style="fill:var(--beard)" d="M182 106C183 128 190 146 207 149C224 146 230 128 231 106C228 116 224 122 219 124C213 120 201 120 195 124C190 122 185 116 182 106Z"></path>
+        <path class="ink thin" d="M186 118l1 2M189 126l1 2M193 134l1 2M199 140l1 2M206 143l0 2M213 140l-1 2M219 134l-1 2M224 126l-1 2M227 118l-1 2M196 130l1 1M203 136l0 2M211 135l-1 2M217 128l-1 1M191 112l0 2M222 112l0 2"></path>
+        <path class="ink" style="fill:var(--stache)" stroke-width="1" d="M195 123Q207 115 219 123Q207 120 195 123Z"></path>
+        <!-- Haare -->
+        <path class="ink" style="fill:var(--hair);stroke:var(--outline)" d="M180 106C172 88 172 70 186 60C196 50 214 48 228 55C236 58 244 54 249 49C247 59 243 63 241 66C247 74 245 90 236 102C234 93 231 86 225 83C214 89 200 90 190 85C186 91 184 99 183 107Z"></path>
+        <path fill="none" style="stroke:var(--hl)" stroke-opacity=".55" stroke-width="1.3" stroke-linecap="round" d="M190 70q12-9 26-6M196 79q14-5 28 1M184 82q2-10 8-16"></path>
+        <path class="ink thin" style="stroke:var(--outline)" d="M222 56c6-8 14-10 22-9M204 52c2-7 8-11 15-11M188 61c-5-4-7-10-5-15M239 66c5-1 9 2 11 6"></path>
+        <!-- Nase -->
+        <path class="ink" d="M208 97C206 107 204 113 201 116q5 4 11 1"></path>
+
+        <!-- Gesicht: konzentriert -->
+        <g class="eyes-down">
+          <path class="ink" stroke-width="3" d="M187 95l14 2M213 97l14-2"></path>
+          <path class="ink" d="M190 104q5 4 10 0M214 104q5 4 10 0"></path>
+          <path class="ink" d="M201 129h10"></path>
+          <path class="acc" d="M210 129q5 1 4 5q-4 1-5-4z"></path>
+        </g>
+        <!-- Gesicht: schaut hoch, grinst -->
+        <g class="eyes-up">
+          <path class="ink" stroke-width="3" d="M187 92q7-5 14-1M212 91q7-4 14 1"></path>
+          <circle class="ink fillp" cx="195" cy="104" r="5.5"></circle><circle cx="195.5" cy="104.5" r="3" style="fill:var(--iris)"></circle><circle cx="195.5" cy="104.5" r="1.4" style="fill:var(--pupil)"></circle>
+          <circle class="ink fillp" cx="219" cy="104" r="5.5"></circle><circle cx="219.5" cy="104.5" r="3" style="fill:var(--iris)"></circle><circle cx="219.5" cy="104.5" r="1.4" style="fill:var(--pupil)"></circle>
+          <path class="acc" d="M197 125Q207 138 219 125Q207 128 197 125Z"></path>
+          <path style="fill:var(--teeth)" d="M198.5 125.6Q207 128.6 217.5 125.6Q208 131.5 198.5 125.6Z"></path>
+          <path class="ink thin" d="M197 125Q207 138 219 125Q207 128 197 125Z"></path>
+        </g>
+      </g></g>
+
+      <!-- Tippende Arme (Falten im Ärmel) -->
+      <g class="type-arm tb"><path fill="none" style="stroke:var(--hl)" stroke-opacity=".55" stroke-width="1.6" stroke-linecap="round" d="M168 210C168 228 172 238 182 243"></path></g>
+      <g class="type-arm r tb"><path fill="none" style="stroke:var(--hl)" stroke-opacity=".55" stroke-width="1.6" stroke-linecap="round" d="M244 210C244 228 240 238 230 243"></path></g>
+
+      <!-- Winkender Arm -->
+      <g class="wave-arm tb">
+        <path d="M244 198Q294 200 302 160" fill="none" style="stroke:var(--ink)" stroke-width="15" stroke-linecap="round"></path>
+        <path d="M244 198Q294 200 302 160" fill="none" style="stroke:var(--sweater)" stroke-width="10" stroke-linecap="round"></path>
+        <g class="forearm tb">
+          <path d="M302 160L305 128" fill="none" style="stroke:var(--ink)" stroke-width="14" stroke-linecap="round"></path>
+          <path d="M302 160L305 128" fill="none" style="stroke:var(--sweater)" stroke-width="9" stroke-linecap="round"></path>
+          <path d="M300 106l-2-10M305 104l0-11M310 105l2-10M296 114l-8-5" fill="none" style="stroke:var(--outline)" stroke-width="5.5" stroke-linecap="round"></path>
+          <path d="M300 106l-2-10M305 104l0-11M310 105l2-10M296 114l-8-5" fill="none" style="stroke:var(--skin)" stroke-width="2.6" stroke-linecap="round"></path>
+          <circle cx="305" cy="114" r="10" style="fill:var(--skin);stroke:var(--outline)" stroke-width="2.4"></circle>
+          <path class="accs" d="M324 100q6 10 0 20M332 96q8 14 0 28"></path>
+        </g>
+      </g>
+
+      <!-- Laptop (Rückseite) -->
+      <path class="ink fillp" d="M158 196L254 193L257 248L156 248Z"></path>
+      <circle class="acc" cx="206" cy="221" r="13"></circle>
+      <path class="ink thin" d="M200 216l-5 5 5 5M212 216l5 5-5 5M209 213l-5 16"></path>
+
+      <!-- Tisch -->
+      <path class="ink" d="M20 252C120 249 280 254 380 251"></path>
+      <path class="ink" d="M24 261C130 258 270 263 376 260"></path>
+      <path class="ink thin" d="M60 266l-4 8M90 266l-4 8M120 266l-4 8M290 266l-4 8M320 266l-4 8M350 266l-4 8"></path>
+      <path class="ink" d="M42 261L40 312M358 260L361 312"></path>
+
+      <!-- Tasse -->
+      <path class="ink fillp" d="M70 218L73 251L100 251L103 218Z"></path>
+      <path class="acc" d="M71.5 228L102 228L101.3 237L72.3 237Z"></path>
+      <path class="ink" d="M103 226c11 0 11 15-1 15"></path>
+      <path class="ink thin steam" d="M80 210c-6-8 6-14 0-24M92 210c-6-8 6-14 0-24"></path>
+    </g>
+  </svg>
+</div>
+
+<style>
+  /* Farben – Hellmodus (Standard) */
+  .desk {
+    --ink: #1f1c18;
+    --paper: #fbfaf7;
+    --accent: #d9604a;
+    --sweater: #34493f;
+    --hair: #3a2e26;
+    --beard: #ddd3c3;
+    --stache: #9a8a75;
+    --hl: #fbfaf7;
+    --teeth: #ffffff;
+    --iris: #4f86c6;
+    --pupil: #1f1c18;
+    --skin: #fbfaf7;
+    --face-ink: #1f1c18;
+    width: 400px;
+    max-width: 100%;
+    aspect-ratio: 400 / 320;
+    display: block;
+    cursor: pointer;
+    outline: none;
+  }
+  /* Dunkelmodus: ThemeScript setzt data-theme="dark" am <html> */
+  :global([data-theme='dark']) .desk {
+    --ink: #efe9de;
+    --paper: #1b1a18;
+    --accent: #f2876f;
+    --sweater: #2c4238;
+    --hair: #4a3b30;
+    --beard: #cfc3ae;
+    --stache: #8f7f6a;
+    --hl: #efe9de;
+    --teeth: #ffffff;
+    --iris: #4f86c6;
+    --skin: #ece4d6;
+    --face-ink: #1b1a18;
+  }
+  .desk:focus-visible {
+    outline: 2px solid var(--accent);
+    outline-offset: 6px;
+    border-radius: 8px;
+  }
+
+  svg {
+    --outline: var(--ink);
+    display: block;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+  }
+  /* Haut (Gesicht, Hals, Hand): eigene Fläche und dunkle Linien, auch im Dunkelmodus */
+  .skin-part {
+    --ink: var(--face-ink);
+    --paper: var(--skin);
+  }
+
+  .ink {
+    fill: none;
+    stroke: var(--ink);
+    stroke-width: 2.4;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+  }
+  .thin {
+    stroke-width: 1.3;
+  }
+  .fillp {
+    fill: var(--paper);
+  }
+  .acc {
+    fill: var(--accent);
+  }
+  .accs {
+    fill: none;
+    stroke: var(--accent);
+    stroke-width: 2.2;
+    stroke-linecap: round;
+  }
+
+  .tb {
+    transform-box: view-box;
+  }
+
+  /* Kopf: Pose (Hover-Übergang) und Wippen (Idle) */
+  .head-pose {
+    transform-origin: 206px 146px;
+    transform: translate(0, 7px) rotate(7deg);
+    transition: transform 0.45s cubic-bezier(0.3, 1.6, 0.5, 1);
+  }
+  .head-bob {
+    transform-origin: 206px 146px;
+    animation: bob 1.6s ease-in-out infinite;
+  }
+  @keyframes bob {
+    50% {
+      transform: rotate(2deg) translateY(1.5px);
+    }
+  }
+
+  .eyes-up,
+  .wave-arm {
+    opacity: 0;
+  }
+  .eyes-down,
+  .eyes-up,
+  .type-arm,
+  .floats {
+    transition: opacity 0.25s;
+  }
+
+  /* Tippende Arme */
+  .type-arm {
+    transform-origin: 206px 240px;
+    animation: type 0.28s steps(2) infinite;
+  }
+  @keyframes type {
+    50% {
+      transform: translateY(-1.5px);
+    }
+  }
+
+  /* Winkender Arm */
+  .wave-arm {
+    transform-origin: 244px 198px;
+    transform: rotate(70deg);
+    transition: transform 0.4s cubic-bezier(0.3, 1.5, 0.5, 1), opacity 0.2s;
+  }
+  .forearm {
+    transform-origin: 302px 160px;
+  }
+
+  /* Code-Zeichen, die aufsteigen */
+  .floaty {
+    animation: float 3.2s ease-in infinite;
+  }
+  .floaty.b {
+    animation-delay: 1.1s;
+  }
+  .floaty.c {
+    animation-delay: 2.2s;
+  }
+  @keyframes float {
+    0% {
+      transform: translateY(12px);
+      opacity: 0;
+    }
+    25% {
+      opacity: 1;
+    }
+    100% {
+      transform: translateY(-28px);
+      opacity: 0;
+    }
+  }
+
+  /* Dampf */
+  .steam {
+    stroke-dasharray: 6 5;
+    animation: steam 1.2s linear infinite;
+  }
+  @keyframes steam {
+    to {
+      stroke-dashoffset: -22;
+    }
+  }
+
+  /* Hover, Tippen, Tastatur-Fokus */
+  .desk:hover .head-pose,
+  .desk:focus .head-pose {
+    transform: translate(0, -4px) rotate(-3deg);
+  }
+  .desk:hover .head-bob,
+  .desk:focus .head-bob {
+    animation: none;
+  }
+  .desk:hover .eyes-down,
+  .desk:focus .eyes-down {
+    opacity: 0;
+  }
+  .desk:hover .eyes-up,
+  .desk:focus .eyes-up {
+    opacity: 1;
+  }
+  .desk:hover .type-arm.r,
+  .desk:focus .type-arm.r {
+    opacity: 0;
+  }
+  .desk:hover .type-arm,
+  .desk:focus .type-arm {
+    animation-play-state: paused;
+  }
+  .desk:hover .floats,
+  .desk:focus .floats {
+    opacity: 0;
+  }
+  .desk:hover .wave-arm,
+  .desk:focus .wave-arm {
+    opacity: 1;
+    transform: rotate(0);
+  }
+  .desk:hover .forearm,
+  .desk:focus .forearm {
+    animation: wave 0.38s ease-in-out 0.35s infinite alternate;
+  }
+  @keyframes wave {
+    from {
+      transform: rotate(-14deg);
+    }
+    to {
+      transform: rotate(16deg);
+    }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .desk :global(*) {
+      animation: none !important;
+      transition: opacity 0.2s !important;
+    }
+    .lines {
+      filter: none;
+    }
+  }
+</style>

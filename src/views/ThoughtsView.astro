@@ -1,7 +1,7 @@
 ---
 // Seite "thoughts" (6d), Liste. Routen: src/pages/thoughts/index.astro (de), src/pages/en/thoughts/index.astro (en)
 import BaseLayout from "../layouts/BaseLayout.astro";
-import Doodle from "../components/Doodle.astro";
+import ThoughtsDoodle from "../components/ThoughtsDoodle.astro";
 import PageShell from "../components/PageShell.astro";
 import { useTranslations, type Lang } from "../i18n/ui";
 import { localePath } from "../i18n/utils";
@@ -18,16 +18,7 @@ const posts = getPosts(lang);
 <BaseLayout lang={lang} active="thoughts" bare>
   <PageShell wide>
     <Fragment slot="doodle">
-      <Doodle
-        name="thoughts"
-        labelA={t("thoughts.doodleA")}
-        labelB={t("thoughts.doodleB")}
-        width={260}
-        height={200}
-        rotate={-3}
-        hoverRotate={2}
-        hoverScale={1.03}
-      />
+      <ThoughtsDoodle alt={t("thoughts.doodleAlt")} />
     </Fragment>
     <div class="thoughts">
     <header>

@@ -3,8 +3,8 @@ import BaseHead from "../components/BaseHead.astro";
 import Sidebar from "../components/Sidebar.astro";
 import SiteFooter from "../components/SiteFooter.astro";
 
-import { SITE_TITLE, SITE_DESCRIPTION } from "../config";
-import type { Lang } from "../i18n/ui";
+import { SITE_TITLE } from "../config";
+import { useTranslations, type Lang } from "../i18n/ui";
 
 export interface Props {
   title?: string;
@@ -26,7 +26,7 @@ export interface Props {
 const {
   image,
   title = SITE_TITLE,
-  description = SITE_DESCRIPTION,
+  description: descriptionProp,
   ogType,
   lang = "de",
   active,
@@ -34,13 +34,14 @@ const {
   fullHeight = false,
   bare = false,
 } = Astro.props;
+const description = descriptionProp ?? useTranslations(lang)("meta.description");
 ---
 
 <!doctype html>
 <html lang={lang}>
   <head>
     <BaseHead title={title} description={description} image={image} ogType={ogType} />
-    <link rel="icon" type="image/svg+xml" href="/favicon.ico" />
+    <link rel="icon" href="/favicon.ico" sizes="48x48" />
   </head>
   <body>
     <div class="layout">

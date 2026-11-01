@@ -3,7 +3,7 @@
 // Daten: src/data/projects.json. Englische Felder (category_en, title_en, description_en) sind
 // optional; fehlen sie, gilt der deutsche Text.
 import BaseLayout from "../layouts/BaseLayout.astro";
-import Doodle from "../components/Doodle.astro";
+import WorksDoodle from "../components/WorksDoodle.astro";
 import PageShell from "../components/PageShell.astro";
 import projects from "../data/projects.json";
 import { useTranslations, type Lang } from "../i18n/ui";
@@ -41,16 +41,7 @@ const groups: { name: string; items: { p: Project; tone: number }[] }[] = [];
 <BaseLayout lang={lang} active="works" stickySidebar bare>
   <PageShell wide>
   <Fragment slot="doodle">
-    <Doodle
-      name="works"
-      labelA={t("works.doodleA")}
-      labelB={t("works.doodleB")}
-      width={260}
-      height={200}
-      rotate={2}
-      hoverRotate={-2}
-      hoverScale={1.03}
-    />
+    <WorksDoodle alt={t("works.doodleAlt")} />
   </Fragment>
   <h1 class="sr">{t("works.title")}</h1>
   <div class="works">
@@ -62,7 +53,7 @@ const groups: { name: string; items: { p: Project; tone: number }[] }[] = [];
             {g.items.map(({ p, tone }) => (
               <a class="tile" href={p.href} target="_blank" rel="noopener" style={`background:var(--t${tone})`}>
                 {p.isNew && <span class="badge">{t("works.new")}</span>}
-                <span class="title" lang="de">{pick(p.title, p.title_en)}</span>
+                <span class="title" lang={lang}>{pick(p.title, p.title_en)}</span>
                 <span class="desc">{pick(p.description, p.description_en)}</span>
                 {p.wip && <span class="stamp">{t("works.wip")}</span>}
               </a>
@@ -95,14 +86,24 @@ const groups: { name: string; items: { p: Project; tone: number }[] }[] = [];
     gap: 32px;
   }
   h2 {
+    position: relative;
     margin: 0;
     align-self: flex-start;
     font-family: var(--font-display);
     font-weight: 700;
     font-size: 34px;
-    text-decoration: underline var(--coral);
-    text-decoration-thickness: 5px;
-    text-underline-offset: 6px;
+  }
+  /* Wellen-Unterstrich wie in der Navigation (Sidebar.astro): Form als Maske, Farbe aus --coral */
+  h2::after {
+    content: "";
+    position: absolute;
+    left: -2px;
+    right: -2px;
+    bottom: -12px;
+    height: 12px;
+    background: var(--coral);
+    -webkit-mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 120 12' preserveAspectRatio='none'%3E%3Cpath d='M3 7 C 20 0 40 13 62 6 S 100 1 117 6' fill='none' stroke='black' stroke-width='3.6' stroke-linecap='round' vector-effect='non-scaling-stroke'/%3E%3C/svg%3E") center / 100% 100% no-repeat;
+    mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 120 12' preserveAspectRatio='none'%3E%3Cpath d='M3 7 C 20 0 40 13 62 6 S 100 1 117 6' fill='none' stroke='black' stroke-width='3.6' stroke-linecap='round' vector-effect='non-scaling-stroke'/%3E%3C/svg%3E") center / 100% 100% no-repeat;
   }
   .grid {
     display: grid;
@@ -111,7 +112,7 @@ const groups: { name: string; items: { p: Project; tone: number }[] }[] = [];
   }
   .tile {
     position: relative;
-    aspect-ratio: 1;
+    aspect-ratio: 6 / 5; /* flacher als quadratisch; wächst bei längerem Inhalt von selbst mit */
     box-sizing: border-box;
     padding: 22px 20px 20px;
     border-radius: 4px;
@@ -187,6 +188,12 @@ const groups: { name: string; items: { p: Project; tone: number }[] }[] = [];
   @media (max-width: 499px) {
     .grid {
       grid-template-columns: minmax(0, 1fr);
+    }
+    /* Einspaltig sind die Kacheln so breit wie der Bildschirm: Höhe nach Inhalt statt festem Verhältnis */
+    .tile {
+      aspect-ratio: auto;
+      min-height: 150px;
+      padding-bottom: 32px;
     }
   }
 

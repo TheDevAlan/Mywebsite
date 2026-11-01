@@ -10,7 +10,7 @@ const { wide = false } = Astro.props;
 ---
 
 <div class:list={['shell', { wide }]}>
-  <div class="doodle"><slot name="doodle" /></div>
+  <div class="doodle-slot"><slot name="doodle" /></div>
   <slot />
 </div>
 
@@ -30,7 +30,7 @@ const { wide = false } = Astro.props;
   .shell.wide {
     align-items: stretch;
   }
-  .doodle {
+  .doodle-slot {
     position: absolute;
     top: 64px;
     right: 80px;
@@ -44,7 +44,7 @@ const { wide = false } = Astro.props;
       gap: 18px;
       padding: 24px 20px 40px;
     }
-    .doodle {
+    .doodle-slot {
       position: static;
       width: 100%;
     }

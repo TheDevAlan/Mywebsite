@@ -1,7 +1,7 @@
 ---
 // Startseite (6a): nur Doodle und Claim, zentriert. Routen: src/pages/index.astro (de), src/pages/en/index.astro (en)
 import BaseLayout from "../layouts/BaseLayout.astro";
-import Doodle from "../components/Doodle.astro";
+import DeskDoodle from "../components/DeskDoodle.astro";
 import { useTranslations, type Lang } from "../i18n/ui";
 
 export interface Props {
@@ -13,16 +13,7 @@ const t = useTranslations(lang);
 
 <BaseLayout lang={lang} bare>
   <div class="home">
-    <Doodle
-      name="home"
-      labelA={t("home.doodleA")}
-      labelB={t("home.doodleB")}
-      width={400}
-      height={320}
-      rotate={2}
-      hoverRotate={-1.5}
-      hoverScale={1.02}
-    />
+    <DeskDoodle alt={t("home.doodleAlt")} />
     <p class="claim">{t("home.claim")}</p>
   </div>
 </BaseLayout>
@@ -45,6 +36,7 @@ const t = useTranslations(lang);
     font-size: 40px;
     line-height: 1.1;
     text-align: center;
+    white-space: pre-line; /* der Zeilenumbruch im Text bleibt erhalten */
     max-width: 520px;
     text-wrap: balance;
   }
