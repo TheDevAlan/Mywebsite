@@ -33,4 +33,8 @@ Alle Workflow-Pfade `docs/…` gelten hier als `planung/…`.
 - [x] 13 — Mobil und reduzierte Bewegung → `planung/segments/v2/13-mobil-reduced-motion.md`
 - [x] 14 — Abschluss und Gesamtprüfung → `planung/segments/v2/14-abschluss-aufraeumen.md`
 
+### Offen vor der Veröffentlichung (Details: Änderung 01, Abschnitt „Offene Entscheidungen“)
+- [ ] Merge-Weg: Pull-Request oder lokaler Merge (Alan entscheidet)
+- [ ] Doodles/englische Texte: abwarten oder mit Platzhaltern live (Alan entscheidet)
+
 _Frühere Runden: keine (`v1` wäre der Erstbau, existiert nicht als Segmente)._

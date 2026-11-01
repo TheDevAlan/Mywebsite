@@ -122,6 +122,14 @@ Geprüft gegen den gebauten Stand (`npm run build`, `astro preview`, Edge per Sk
 
 Offene Nebenbefunde (bewusst nicht Teil dieser Änderung): `pnpm-lock.yaml` ist veraltet; `.astro/` ist getrackt; `/social_img.webp` fehlt; `public/Profil/` und `docs/Profil/` ungenutzt; `npm audit` meldet Schwachstellen in Astro-Werkzeugen (die Seite liefert nur statische Dateien aus, nichts davon läuft live).
 
+## Offene Entscheidungen vor der Veröffentlichung (Stand: 2026-10-31)
+Alan führt am nächsten Tag mit der Veröffentlichungs-Planung fort. Bis dahin ist nichts gemergt und nichts gepusht.
+
+1. **Merge-Weg:** Pull-Request auf GitHub (Vorschlag: alle Änderungen sichtbar, Beschreibung mit Prüfprotokoll) oder lokaler `git merge`. Claude bereitet den Pull-Request nur vor, wenn Alan ausdrücklich ja sagt; Anlegen und Mergen ebenfalls nur auf ausdrückliches Ja.
+2. **Doodles und englische Texte:** Warten auf echte Doodles und fertige englische Texte, oder geht die Seite mit den Platzhalter-Doodles und den bisherigen englischen Texten live? Die Platzhalter wären dann öffentlich sichtbar.
+
+Vorgesehener Ablauf nach den Entscheidungen: Seite lokal und auf dem Handy ansehen → Zweig sichern (`git push -u origin change/01-design-relaunch`) → Zusammenführen nach `main` → Push → GitHub Pages abwarten (1–2 Minuten) → `alangawlik.de`, `/projects`-Weiterleitung, `/robots.txt` und die eigene Domain unter Settings → Pages prüfen. Rückweg: `git revert -m 1 <Merge-Commit>`.
+
 ## Rollback
 Zweig `change/01-design-relaunch`. Der Zweig `main` (= die live veröffentlichte Seite) bleibt unangetastet, bis du bewusst zusammenführst.
 Zurück zum alten Stand: `git checkout main` — dann hast du wieder exakt die bisherige Seite. Wenn nach einer Zusammenführung etwas schiefgeht: `git revert` auf den Merge-Commit macht ihn rückgängig, ohne Verlauf zu löschen.
