@@ -25,6 +25,8 @@ const de = {
   'works.title': 'works',
   'works.new': 'neu!',
   'works.wip': 'in arbeit',
+  'works.doodleA': 'du mit Werkzeug in der Hand',
+  'works.doodleB': 'das Werk ist fertig',
   'thoughts.title': 'thoughts',
   'thoughts.sub': 'Kleine Texte über verschiedene Sachen.',
   'thoughts.doodleA': 'du, nachdenklich, Gedankenblase über dem Kopf',

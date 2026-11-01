@@ -3,6 +3,8 @@
 // Daten: src/data/projects.json. Englische Felder (category_en, title_en, description_en) sind
 // optional; fehlen sie, gilt der deutsche Text.
 import BaseLayout from "../layouts/BaseLayout.astro";
+import Doodle from "../components/Doodle.astro";
+import PageShell from "../components/PageShell.astro";
 import projects from "../data/projects.json";
 import { useTranslations, type Lang } from "../i18n/ui";
 
@@ -36,7 +38,20 @@ const groups: { name: string; items: { p: Project; tone: number }[] }[] = [];
 });
 ---
 
-<BaseLayout lang={lang} active="works" stickySidebar>
+<BaseLayout lang={lang} active="works" stickySidebar bare>
+  <PageShell wide>
+  <Fragment slot="doodle">
+    <Doodle
+      name="works"
+      labelA={t("works.doodleA")}
+      labelB={t("works.doodleB")}
+      width={260}
+      height={200}
+      rotate={2}
+      hoverRotate={-2}
+      hoverScale={1.03}
+    />
+  </Fragment>
   <h1 class="sr">{t("works.title")}</h1>
   <div class="works">
     {
@@ -57,6 +72,7 @@ const groups: { name: string; items: { p: Project; tone: number }[] }[] = [];
       ))
     }
   </div>
+  </PageShell>
 </BaseLayout>
 
 <style>

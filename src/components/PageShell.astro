@@ -1,0 +1,52 @@
+---
+// Gemeinsamer Rahmen der Unterseiten (about, works, thoughts, contact), nach dem Vorbild von contact:
+// Doodle rechts oben (Slot "doodle"), der Inhalt (Standard-Slot) steht darunter mittig in der Spalte.
+// Die Startseite hat ein eigenes Layout und nutzt diesen Rahmen nicht.
+export interface Props {
+  /** Inhalt füllt die ganze Spaltenbreite (works, thoughts) statt links bündig zu stehen */
+  wide?: boolean;
+}
+const { wide = false } = Astro.props;
+---
+
+<div class:list={['shell', { wide }]}>
+  <div class="doodle"><slot name="doodle" /></div>
+  <slot />
+</div>
+
+<style>
+  .shell {
+    position: relative;
+    min-height: 100vh;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: flex-start;
+    gap: 22px;
+    /* oben Platz für das Doodle (64 px Abstand + 200 px Höhe + Neigung); der Inhalt beginnt auf allen Seiten auf gleicher Höhe darunter */
+    padding: 290px 72px 96px 24px;
+  }
+  .shell.wide {
+    align-items: stretch;
+  }
+  .doodle {
+    position: absolute;
+    top: 64px;
+    right: 80px;
+  }
+
+  /* Mobil: Doodle steht statisch über dem Inhalt (Handoff, Responsive) */
+  @media (max-width: 800px) {
+    .shell {
+      min-height: 0;
+      justify-content: flex-start;
+      gap: 18px;
+      padding: 24px 20px 40px;
+    }
+    .doodle {
+      position: static;
+      width: 100%;
+    }
+  }
+</style>

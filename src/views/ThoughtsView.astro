@@ -2,6 +2,7 @@
 // Seite "thoughts" (6d), Liste. Routen: src/pages/thoughts/index.astro (de), src/pages/en/thoughts/index.astro (en)
 import BaseLayout from "../layouts/BaseLayout.astro";
 import Doodle from "../components/Doodle.astro";
+import PageShell from "../components/PageShell.astro";
 import { useTranslations, type Lang } from "../i18n/ui";
 import { localePath } from "../i18n/utils";
 import { getPosts, formatMonth } from "../lib/posts";
@@ -15,22 +16,25 @@ const posts = getPosts(lang);
 ---
 
 <BaseLayout lang={lang} active="thoughts" bare>
-  <div class="thoughts">
+  <PageShell wide>
+    <Fragment slot="doodle">
+      <Doodle
+        name="thoughts"
+        labelA={t("thoughts.doodleA")}
+        labelB={t("thoughts.doodleB")}
+        width={260}
+        height={200}
+        rotate={-3}
+        hoverRotate={2}
+        hoverScale={1.03}
+      />
+    </Fragment>
+    <div class="thoughts">
     <header>
       <div class="head">
         <h1>{t("thoughts.title")}.</h1>
         <p class="sub">{t("thoughts.sub")}</p>
       </div>
-      <Doodle
-        name="thoughts"
-        labelA={t("thoughts.doodleA")}
-        labelB={t("thoughts.doodleB")}
-        width={240}
-        height={190}
-        rotate={-3}
-        hoverRotate={2}
-        hoverScale={1.03}
-      />
     </header>
 
     {
@@ -54,7 +58,8 @@ const posts = getPosts(lang);
         </ul>
       )
     }
-  </div>
+    </div>
+  </PageShell>
 </BaseLayout>
 
 <style>
@@ -62,13 +67,6 @@ const posts = getPosts(lang);
     display: flex;
     flex-direction: column;
     gap: 40px;
-    padding: 72px 72px 72px 24px;
-  }
-  header {
-    display: flex;
-    justify-content: space-between;
-    align-items: flex-end;
-    gap: 32px;
   }
   .head {
     display: flex;
@@ -139,12 +137,6 @@ const posts = getPosts(lang);
   @media (max-width: 800px) {
     .thoughts {
       gap: 28px;
-      padding: 24px 20px 40px;
-    }
-    header {
-      flex-direction: column;
-      align-items: flex-start;
-      gap: 20px;
     }
     h1 {
       font-size: 44px;
